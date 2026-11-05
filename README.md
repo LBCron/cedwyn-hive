@@ -26,8 +26,9 @@ git clone --depth 1 https://github.com/unclehowell/cedwyn-hive.git
 
 ## Previews
 
-`preview.yml` deploys every pull request to Cloudflare Pages and comments the link, once the repository secrets
-`CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` are set (Settings → Secrets → Actions). Without them it stops quietly.
+Cloudflare Pages builds this repository itself (project `cedwyn-hive`): `main` at https://cedwyn-hive.pages.dev/ and every
+branch or pull request at `https://<branch>.cedwyn-hive.pages.dev/`, with the link commented on the pull request.
+`preview.yml` is the fallback route (wrangler with the secrets `CLOUDFLARE_API_TOKEN` / `CLOUDFLARE_ACCOUNT_ID`, unset; it stops quietly).
 
 ## History before the split
 
