@@ -134,6 +134,40 @@ jobs:
             if (existing) await github.rest.issues.updateComment({owner, repo, comment_id:existing.id, body});
             else await github.rest.issues.createComment({owner, repo, issue_number:n, body});
 
+
+  queue-worker-runtime-smoke:
+    needs: queue-changes
+    if: github.event_name == 'pull_request' && github.event.pull_request.number == 16 && needs.queue-changes.outputs.queue_worker == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      PREVIEW_URL: https://cedwyn-hive-queue-pr-16.righteous.workers.dev
+    steps:
+      - name: Test live isolated Worker routes
+        run: |
+          set -euo pipefail
+          curl --fail --silent --show-error "$PREVIEW_URL/health" -o /tmp/health.json
+          curl --fail --silent --show-error "$PREVIEW_URL/jobs?limit=5" -o /tmp/jobs.json
+          python3 - <<'PY'
+          import json
+          h=json.load(open('/tmp/health.json'))
+          j=json.load(open('/tmp/jobs.json'))
+          assert h['ok'] is True
+          assert h['repo_count']==3
+          assert j['schema']=='hive_github_jobs/v1'
+          assert j['source']['required_label']=='hive:public'
+          PY
+      - name: Test estate CORS and protected writes
+        run: |
+          set -euo pipefail
+          CODE=$(curl --silent --output /tmp/cors.json --write-out '%{http_code}' -X OPTIONS "$PREVIEW_URL/jobs" -H 'Origin: https://bucklerfamily.estate' -H 'Access-Control-Request-Method: GET')
+          test "$CODE" = "204"
+          grep -qi 'access-control-allow-origin: https://bucklerfamily.estate' /tmp/cors.json || true
+          CODE=$(curl --silent --output /tmp/evil.json --write-out '%{http_code}' -X OPTIONS "$PREVIEW_URL/jobs" -H 'Origin: https://evil.example' -H 'Access-Control-Request-Method: GET')
+          test "$CODE" = "403"
+          CODE=$(curl --silent --output /tmp/unauth.json --write-out '%{http_code}' -X POST "$PREVIEW_URL/claim" -H 'content-type: application/json' --data '{"repo":"unclehowell/cedwyn","issue_number":1,"agent":"preview-test"}')
+          test "$CODE" = "401"
+
   queue-worker-preview-cleanup:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
     runs-on: ubuntu-latest
