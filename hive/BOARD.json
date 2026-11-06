@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-06T09:55:04Z",
+ "updated": "2026-11-06T11:43:59Z",
  "schema": "metadata only: id, record, version, status, turn, open_issues, last_change, last_agent, rounds (versions written so far); events: [{at, draft, version, agent, event}], newest last. Never email text.",
  "drafts": [
   {
@@ -4725,12 +4725,12 @@
   {
    "id": "prc-g4a-plan-of-the-1916-tenancy-whole-of-the-fa-730484",
    "record": "HubSpot task 535502730484",
-   "version": "v0.1.1",
-   "status": "TURN: Claude",
-   "turn": "Claude (per HubSpot subject, read 2026-11-03T09:41Z)",
-   "open_issues": null,
-   "last_change": "2026-11-03T09:12:05Z",
-   "last_agent": "Grok",
+   "version": "v0.1.3",
+   "status": "TURN: ChatGPT",
+   "turn": "ChatGPT (per canonical HubSpot subject, re-read 2026-11-06T11:41:50.271Z)",
+   "open_issues": 1,
+   "last_change": "2026-11-06T11:41:50.271Z",
+   "last_agent": "ChatGPT",
    "rounds": null,
    "tier_since": "2026-10-29T22:47:13Z",
    "tier": "working",
@@ -7605,6 +7605,13 @@
    "version": null,
    "agent": "Tab",
    "event": "Board sync from HubSpot subjects: hmlr-sar-wa735527-wa513690: TURN: ChatGPT v0.7.1 -> OTHER AGENT'S TURN v0.7.2; vale-eir-vg41: TURN: ChatGPT v0.9.0 -> OTHER AGENT'S TURN v0.9.1; hmlr-customer-support-titles: TURN: ChatGPT v0.6.2 -> TURN: Claude v0.6.4; swp-internal-review-1188-26: TURN: ChatGPT v0.1.4 -> TURN: Grok v0.1.4; defra-foi-eir-20-oct: TURN: ChatGPT v0.1.4 -> DONE: ChatGPT v0.1.4; prc-b3-parcel-b-lead-855316: TURN: ChatGPT v0.1.1 -> TURN: Claude v0.1.3; prc-g7-family-parcel-definitions-parcels-a-b-c-a-845245: TURN: ChatGPT v0.1.0 -> TURN: Claude v0.1.2; prc-g5-village-green-vg41-728676: TURN: ChatGPT v0.1.1 -> TURN: Claude v0.1.3; prc-g4c-schedule-of-the-25-dec-1938-bute-mountjo-339945: TURN: ChatGPT v0.1.0 -> TURN: Claude v0.1.2; defra-information-rights-188514: OTHER AGENT'S TURN v0.1.5 -> OTHER AGENT'S TURN v0.2.0; vale-of-glamorgan-council-foi-00211722-994086: TURN: ChatGPT v0.3.0 -> QUARANTINED — malformed. Metadata only."
+  },
+  {
+   "at": "2026-11-06T11:43:59Z",
+   "draft": "prc-g4a-plan-of-the-1916-tenancy-whole-of-the-fa-730484",
+   "version": "v0.1.3",
+   "agent": "ChatGPT",
+   "event": "Synced metadata after bounded HubSpot task update; task remains open; canonical text/findings remain only in HubSpot. Metadata only."
   }
  ],
  "pct_rule": "% complete = progress through the review gate on the exact current frozen version: pct = round(100 x (0.7 x min(version_reviews,10)/10 + 0.3 x min(version_distinct_agents,4)/4)). version_reviews / version_distinct_agents / version_agents are counted from each HubSpot task's signed changelog (material reviews of the current version only; creation, skips, routes and restores are not reviews; a signed version_reviews=N tally in the changelog is honoured when higher). Capped at 95 until the task is READY TO SEND or later AND its Gmail draft exists (gmail_draft_id); then 100 = in the owner's Gmail, ready to send or schedule. SENT rows show Sent. Historical reviews/distinct_agents/agents are informational only. Promotion gates beyond IN REVIEW (open_issues=0, seat_agreements_version, final_three_hat_version, attachments_verified_version equal to version) still fail closed.",
