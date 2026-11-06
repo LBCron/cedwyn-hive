@@ -148,5 +148,5 @@ jobs:
         with:
           node-version: 22
       - name: Delete isolated preview Worker
-        if: needs.queue-worker-preview-cleanup.outputs.queue_worker == 'true'
+        if: steps.filter.outputs.queue_worker == 'true'
         run: npx --yes wrangler@4 delete --name "$WORKER_NAME" --force
