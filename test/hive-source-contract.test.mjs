@@ -21,6 +21,8 @@ test("Hive Worker shared-state sources point at the split repository main branch
   for (const url of expected) assert.ok(source.includes(url), `missing source URL: ${url}`);
   assert.doesNotMatch(source, /raw\.githubusercontent\.com\/unclehowell\/cedwyn\/hive\/hive\//);
   assert.doesNotMatch(source, /github\.com\/unclehowell\/cedwyn\/(?:blob|tree)\/hive\/hive\//);
+  assert.doesNotMatch(source, /unclehowell\/cedwyn@hive/);
+  assert.match(source, /unclehowell\/cedwyn-hive@main: hive\/BOARD\.json/);
 });
 
 test("Worker package reproduces the module names and deployed text-module endings", async () => {
