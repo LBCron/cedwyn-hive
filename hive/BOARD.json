@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-06T21:49:09Z",
+ "updated": "2026-11-06T21:53:28Z",
  "schema": "metadata only: id, record, version, status, turn, open_issues, last_change, last_agent, rounds (versions written so far); events: [{at, draft, version, agent, event}], newest last. Never email text.",
  "drafts": [
   {
@@ -6994,8 +6994,8 @@
    "gmail_draft_id": null,
    "sent_at": null,
    "archive_url": null,
-   "version_reviews": null,
-   "version_distinct_agents": null,
+   "version_reviews": 0,
+   "version_distinct_agents": 0,
    "version_agents": [],
    "seat_agreements_version": null,
    "final_three_hat_version": null,
@@ -7005,7 +7005,9 @@
     "body": "Dŵr Cymru Welsh Water",
     "as_of": "2026-11-06T21:49:09Z",
     "note": "Board entry added from the HubSpot subject by board_sync.py; no context pack yet. Metadata only."
-   }
+   },
+   "pct": 0,
+   "pct_at": "2026-11-06T21:53:28Z"
   },
   {
    "id": "glamorgan-archives-378010",
@@ -7023,8 +7025,8 @@
    "gmail_draft_id": null,
    "sent_at": null,
    "archive_url": null,
-   "version_reviews": null,
-   "version_distinct_agents": null,
+   "version_reviews": 0,
+   "version_distinct_agents": 0,
    "version_agents": [],
    "seat_agreements_version": null,
    "final_three_hat_version": null,
@@ -7034,7 +7036,9 @@
     "body": "Glamorgan Archives",
     "as_of": "2026-11-06T21:49:09Z",
     "note": "Board entry added from the HubSpot subject by board_sync.py; no context pack yet. Metadata only."
-   }
+   },
+   "pct": 0,
+   "pct_at": "2026-11-06T21:53:28Z"
   },
   {
    "id": "information-commissioner-s-office-898704",
@@ -7052,8 +7056,8 @@
    "gmail_draft_id": null,
    "sent_at": null,
    "archive_url": null,
-   "version_reviews": null,
-   "version_distinct_agents": null,
+   "version_reviews": 0,
+   "version_distinct_agents": 0,
    "version_agents": [],
    "seat_agreements_version": null,
    "final_three_hat_version": null,
@@ -7063,7 +7067,9 @@
     "body": "Information Commissioner's Office",
     "as_of": "2026-11-06T21:49:09Z",
     "note": "Board entry added from the HubSpot subject by board_sync.py; no context pack yet. Metadata only."
-   }
+   },
+   "pct": 0,
+   "pct_at": "2026-11-06T21:53:28Z"
   },
   {
    "id": "cadw-welsh-government-888574",
@@ -7081,8 +7087,8 @@
    "gmail_draft_id": null,
    "sent_at": null,
    "archive_url": null,
-   "version_reviews": null,
-   "version_distinct_agents": null,
+   "version_reviews": 0,
+   "version_distinct_agents": 0,
    "version_agents": [],
    "seat_agreements_version": null,
    "final_three_hat_version": null,
@@ -7092,7 +7098,9 @@
     "body": "Cadw / Welsh Government",
     "as_of": "2026-11-06T21:49:09Z",
     "note": "Board entry added from the HubSpot subject by board_sync.py; no context pack yet. Metadata only."
-   }
+   },
+   "pct": 0,
+   "pct_at": "2026-11-06T21:53:28Z"
   }
  ],
  "synced_at": "2026-11-06T21:49:09Z",
