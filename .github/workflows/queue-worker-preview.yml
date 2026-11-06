@@ -21,9 +21,9 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     env:
-      CLOUDFLARE_API_TOKEN: \${{ secrets.CLOUDFLARE_API_TOKEN }}
-      CLOUDFLARE_ACCOUNT_ID: \${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-      WORKER_NAME: cedwyn-hive-queue-pr-\${{ github.event.pull_request.number }}
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      WORKER_NAME: cedwyn-hive-queue-pr-${{ github.event.pull_request.number }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -38,27 +38,21 @@ jobs:
         run: |
           set -euo pipefail
           npx --yes wrangler@4 deploy --config queue-worker/wrangler.jsonc --name "$WORKER_NAME" | tee /tmp/deploy.log
-          URL="https://\${WORKER_NAME}.righteous.workers.dev"
+          URL="https://${WORKER_NAME}.righteous.workers.dev"
           echo "preview_url=$URL" >> "$GITHUB_OUTPUT"
-      - name: Configure temporary preview-only bearer token
-        id: secret
+      - name: Configure token and smoke-test isolated preview
+        env:
+          PREVIEW_URL: ${{ steps.deploy.outputs.preview_url }}
         run: |
           set -euo pipefail
           TOKEN="$(openssl rand -hex 32)"
           printf '%s' "$TOKEN" | npx --yes wrangler@4 secret put HIVE_QUEUE_TOKEN --name "$WORKER_NAME" --config queue-worker/wrangler.jsonc
           echo "::add-mask::$TOKEN"
-          echo "token=$TOKEN" >> "$GITHUB_OUTPUT"
-      - name: Smoke-test public read and protected writes
-        env:
-          PREVIEW_URL: \${{ steps.deploy.outputs.preview_url }}
-          QUEUE_TOKEN: \${{ steps.secret.outputs.token }}
-        run: |
-          set -euo pipefail
           curl --fail --silent --show-error "$PREVIEW_URL/health" | tee /tmp/health.json
           curl --fail --silent --show-error "$PREVIEW_URL/jobs?limit=5" | tee /tmp/jobs.json
           CODE=$(curl --silent --output /tmp/unauth.json --write-out '%{http_code}' -X POST "$PREVIEW_URL/claim" -H 'content-type: application/json' --data '{"repo":"unclehowell/cedwyn","issue_number":1,"agent":"preview-test"}')
           test "$CODE" = "401"
-          CODE=$(curl --silent --output /tmp/auth.json --write-out '%{http_code}' -X POST "$PREVIEW_URL/claim" -H "authorization: Bearer $QUEUE_TOKEN" -H 'content-type: application/json' --data '{"repo":"not-allowlisted/repo","issue_number":1,"agent":"preview-test"}')
+          CODE=$(curl --silent --output /tmp/auth.json --write-out '%{http_code}' -X POST "$PREVIEW_URL/claim" -H "authorization: Bearer $TOKEN" -H 'content-type: application/json' --data '{"repo":"not-allowlisted/repo","issue_number":1,"agent":"preview-test"}')
           test "$CODE" = "400"
           echo "Preview smoke tests passed: health, jobs, unauthenticated-write rejection, allowlist validation."
       - name: Comment preview URL
@@ -66,7 +60,7 @@ jobs:
         with:
           script: |
             const n = context.payload.pull_request.number;
-            const body = 'Isolated GitHub Issues queue Worker preview: \${{ steps.deploy.outputs.preview_url }}/health\n\nPublic GET /jobs and protected POST /claim, /renew, /release. This preview has a temporary secret and isolated Durable Object namespace; it does not modify ghf-watch.';
+            const body = 'Isolated GitHub Issues queue Worker preview: ${{ steps.deploy.outputs.preview_url }}/health\n\nPublic GET /jobs and protected POST /claim, /renew, /release. This preview has a temporary secret and isolated Durable Object namespace; it does not modify ghf-watch.';
             const {owner, repo} = context.repo;
             const comments = await github.rest.issues.listComments({owner, repo, issue_number:n});
             const existing = comments.data.find(x => x.body.startsWith('Isolated GitHub Issues queue Worker preview:'));
@@ -77,9 +71,9 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     env:
-      CLOUDFLARE_API_TOKEN: \${{ secrets.CLOUDFLARE_API_TOKEN }}
-      CLOUDFLARE_ACCOUNT_ID: \${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-      WORKER_NAME: cedwyn-hive-queue-pr-\${{ github.event.pull_request.number }}
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      WORKER_NAME: cedwyn-hive-queue-pr-${{ github.event.pull_request.number }}
     steps:
       - uses: actions/setup-node@v4
         with:
