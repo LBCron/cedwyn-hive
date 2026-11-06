@@ -153,10 +153,20 @@ jobs:
               pull_number: context.payload.pull_request.number
             });
             core.setOutput('queue_worker', files.some(f => f.filename.startsWith('queue-worker/')) ? 'true' : 'false');
-      - uses: actions/setup-node@v4
+      - name: Check cleanup credentials
+        id: secrets
         if: steps.filter.outputs.queue_worker == 'true'
+        run: |
+          if [ -z "$CLOUDFLARE_API_TOKEN" ] || [ -z "$CLOUDFLARE_ACCOUNT_ID" ]; then
+            echo "::notice::Cloudflare GitHub Actions secrets are absent; a manually deployed preview needs deletion through Cloudflare."
+            echo "ok=0" >> "$GITHUB_OUTPUT"
+          else
+            echo "ok=1" >> "$GITHUB_OUTPUT"
+          fi
+      - uses: actions/setup-node@v4
+        if: steps.filter.outputs.queue_worker == 'true' && steps.secrets.outputs.ok == '1'
         with:
           node-version: 22
       - name: Delete isolated preview Worker
-        if: steps.filter.outputs.queue_worker == 'true'
+        if: steps.filter.outputs.queue_worker == 'true' && steps.secrets.outputs.ok == '1'
         run: npx --yes wrangler@4 delete --name "$WORKER_NAME" --force
