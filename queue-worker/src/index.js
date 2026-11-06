@@ -1,0 +1,135 @@
+import { IssueLease } from "./issue-lease.js";
+
+const API = "https://api.github.com";
+const LABEL = "hive:public";
+const MAX_REPOS = 30;
+const MAX_LIMIT = 100;
+const DEFAULT_TTL = 60 * 60 * 1000;
+
+function json(data, status = 200, extra = {}) {
+  return new Response(JSON.stringify(data), {
+    status,
+    headers: { "content-type": "application/json; charset=utf-8", "cache-control": "no-store", ...extra }
+  });
+}
+
+function repoAllowlist(env) {
+  return String(env.PUBLIC_REPOS || "").split(",").map(x => x.trim().toLowerCase()).filter(Boolean).slice(0, MAX_REPOS);
+}
+
+function validRepo(repo, repos) {
+  const value = String(repo || "").trim().toLowerCase();
+  return repos.includes(value) && /^[a-z0-9_.-]+\/[a-z0-9_.-]+$/.test(value) ? value : null;
+}
+
+function priority(labels) {
+  const names = labels.map(x => String(x.name || "").toLowerCase());
+  if (names.some(x => x === "priority:critical" || x === "priority:high")) return "HIGH";
+  if (names.some(x => x === "priority:medium")) return "MEDIUM";
+  if (names.some(x => x === "priority:low")) return "LOW";
+  return "NONE";
+}
+
+function publicIssue(item) {
+  const labels = Array.isArray(item.labels) ? item.labels.map(x => String(x.name || "")).filter(Boolean) : [];
+  return {
+    id: String(item.id),
+    repo: String(item.repository_url || "").split("/").slice(-2).join("/").toLowerCase(),
+    number: Number(item.number),
+    title: String(item.title || "").slice(0, 240),
+    url: String(item.html_url || ""),
+    state: String(item.state || ""),
+    priority: priority(labels),
+    labels: labels.slice(0, 20),
+    assignees: Array.isArray(item.assignees) ? item.assignees.map(x => String(x.login || "")).filter(Boolean).slice(0, 10) : [],
+    created_at: item.created_at || null,
+    updated_at: item.updated_at || null
+  };
+}
+
+async function githubIssues(repo, env) {
+  const label = encodeURIComponent(LABEL);
+  const q = encodeURIComponent("repo:" + repo + " is:issue is:open label:" + LABEL);
+  const url = API + "/search/issues?q=" + q + "&per_page=100&sort=updated&order=desc";
+  const response = await fetch(url, {
+    headers: { accept: "application/vnd.github+json", "x-github-api-version": "2022-11-28", "user-agent": "cedwyn-hive-queue" },
+    cf: { cacheTtl: 30, cacheEverything: true }
+  });
+  if (!response.ok) throw new Error("GitHub issue search failed for " + repo + " (HTTP " + response.status + ")");
+  const payload = await response.json();
+  return (payload.items || []).filter(item => !item.pull_request && item.state === "open" &&
+    (item.labels || []).some(x => String(x.name || "").toLowerCase() === LABEL)).map(publicIssue);
+}
+
+async function issueIsEligible(repo, number) {
+  const response = await fetch(API + "/repos/" + repo + "/issues/" + number, {
+    headers: { accept: "application/vnd.github+json", "x-github-api-version": "2022-11-28", "user-agent": "cedwyn-hive-queue" }
+  });
+  if (!response.ok) return false;
+  const issue = await response.json();
+  return !issue.pull_request && issue.state === "open" &&
+    Array.isArray(issue.labels) && issue.labels.some(x => String(x.name || "").toLowerCase() === LABEL);
+}
+
+function objectFor(env, repo, number) {
+  const key = repo + "#" + number;
+  return env.ISSUE_LEASES.getByName(key);
+}
+
+async function route(request, env) {
+  const url = new URL(request.url);
+  const repos = repoAllowlist(env);
+  if (url.pathname === "/health" && request.method === "GET") {
+    return json({ ok: true, service: "cedwyn-hive-github-queue", source: "public GitHub Issues", label: LABEL, repo_count: repos.length });
+  }
+  if (url.pathname === "/jobs" && request.method === "GET") {
+    const limit = Math.max(1, Math.min(MAX_LIMIT, Number(url.searchParams.get("limit")) || 50));
+    try {
+      const pages = await Promise.all(repos.map(repo => githubIssues(repo, env)));
+      const issues = pages.flat().sort((a, b) => {
+        const rank = { HIGH: 0, MEDIUM: 1, LOW: 2, NONE: 3 };
+        return rank[a.priority] - rank[b.priority] || String(a.created_at).localeCompare(String(b.created_at));
+      });
+      const leases = await Promise.all(issues.map(async issue => ({ issue, lease: await objectFor(env, issue.repo, issue.number).getLease() })));
+      const rows = leases.map(({ issue, lease }) => ({ ...issue, claim: lease, takeable: !lease }));
+      return json({
+        schema: "hive_github_jobs/v1",
+        generated_at: new Date().toISOString(),
+        source: { type: "github-issues", allowlisted_repositories: repos, required_label: LABEL },
+        counts: { open: rows.length, claimed: rows.filter(x => x.claim).length, takeable: rows.filter(x => x.takeable).length },
+        jobs: rows.slice(0, limit),
+        next_job: rows.find(x => x.takeable) || null
+      });
+    } catch (error) {
+      return json({ error: "GitHub issue queue unavailable", detail: String(error.message || error) }, 502);
+    }
+  }
+  if (url.pathname === "/claim" || url.pathname === "/renew" || url.pathname === "/release") {
+    if (request.method !== "POST") return json({ error: "POST required" }, 405);
+    let body;
+    try { body = await request.json(); } catch { return json({ error: "valid JSON body required" }, 400); }
+    const repo = validRepo(body.repo, repos);
+    const number = Number(body.issue_number);
+    const agent = String(body.agent || "").replace(/[\u0000-\u001f<>]/g, "").trim().slice(0, 60);
+    if (!repo || !Number.isSafeInteger(number) || number < 1 || !agent) return json({ error: "repo, positive issue_number and agent are required" }, 400);
+    if (url.pathname !== "/release" && !(await issueIsEligible(repo, number))) return json({ error: "issue is not open and explicitly labelled " + LABEL }, 409);
+    const stub = objectFor(env, repo, number);
+    if (url.pathname === "/release") return json(await stub.release(agent));
+    return json(await stub.claim(agent, DEFAULT_TTL));
+  }
+  if (url.pathname === "/lease" && request.method === "GET") {
+    const repo = validRepo(url.searchParams.get("repo"), repos);
+    const number = Number(url.searchParams.get("issue_number"));
+    if (!repo || !Number.isSafeInteger(number) || number < 1) return json({ error: "valid repo and issue_number required" }, 400);
+    return json({ repo, issue_number: number, lease: await objectFor(env, repo, number).getLease() });
+  }
+  return json({ error: "not found" }, 404);
+}
+
+export { IssueLease };
+export default {
+  async fetch(request, env) {
+    try { return await route(request, env); }
+    catch (error) { return json({ error: "queue request failed", detail: String(error.message || error) }, 500); }
+  }
+};
