@@ -10,6 +10,10 @@ Only open GitHub issues in the configured repository allowlist that carry the ex
 
 One SQLite-backed Durable Object instance per `owner/repo#issue_number`. Claim, renew and release are serialized by that issue's Durable Object and persisted in its storage. Lease state is coordination only; GitHub remains authoritative for issue state, labels, assignees and acceptance. Claims expire after 60 minutes; renewal is limited to 2 hours per call. Another agent's live claim is refused. Expired claims can be replaced. Only the holder can release.
 
+## Browser access
+
+The API allows CORS only from HTTPS origins on bucklerfamily.estate and its subdomains. Server-to-server calls need no CORS headers. Lease mutations require the bearer token.
+
 ## Endpoints
 
 - `GET /health`
