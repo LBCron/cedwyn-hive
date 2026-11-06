@@ -160,9 +160,9 @@ jobs:
       - name: Test estate CORS and protected writes
         run: |
           set -euo pipefail
-          CODE=$(curl --silent --output /tmp/cors.json --write-out '%{http_code}' -X OPTIONS "$PREVIEW_URL/jobs" -H 'Origin: https://bucklerfamily.estate' -H 'Access-Control-Request-Method: GET')
+          CODE=$(curl --silent --dump-header /tmp/cors.headers --output /tmp/cors.json --write-out '%{http_code}' -X OPTIONS "$PREVIEW_URL/jobs" -H 'Origin: https://bucklerfamily.estate' -H 'Access-Control-Request-Method: GET')
           test "$CODE" = "204"
-          grep -qi 'access-control-allow-origin: https://bucklerfamily.estate' /tmp/cors.json || true
+          grep -qi 'access-control-allow-origin: https://bucklerfamily.estate' /tmp/cors.headers
           CODE=$(curl --silent --output /tmp/evil.json --write-out '%{http_code}' -X OPTIONS "$PREVIEW_URL/jobs" -H 'Origin: https://evil.example' -H 'Access-Control-Request-Method: GET')
           test "$CODE" = "403"
           CODE=$(curl --silent --output /tmp/unauth.json --write-out '%{http_code}' -X POST "$PREVIEW_URL/claim" -H 'content-type: application/json' --data '{"repo":"unclehowell/cedwyn","issue_number":1,"agent":"preview-test"}')
