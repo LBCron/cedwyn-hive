@@ -33,7 +33,6 @@ function priority(labels) {
 function publicIssue(item) {
   const labels = Array.isArray(item.labels) ? item.labels.map(x => String(x.name || "")).filter(Boolean) : [];
   return {
-    id: String(item.id),
     repo: String(item.repository_url || "").split("/").slice(-2).join("/").toLowerCase(),
     number: Number(item.number),
     title: String(item.title || "").slice(0, 240),
@@ -71,6 +70,19 @@ async function issueIsEligible(repo, number) {
     Array.isArray(issue.labels) && issue.labels.some(x => String(x.name || "").toLowerCase() === LABEL);
 }
 
+async function tokenMatches(expected, supplied) {
+  if (!expected || !supplied) return false;
+  const encoder = new TextEncoder();
+  const [a, b] = await Promise.all([
+    crypto.subtle.digest("SHA-256", encoder.encode(expected)),
+    crypto.subtle.digest("SHA-256", encoder.encode(supplied))
+  ]);
+  const left = new Uint8Array(a), right = new Uint8Array(b);
+  let mismatch = 0;
+  for (let i = 0; i < left.length; i++) mismatch |= left[i] ^ right[i];
+  return mismatch === 0;
+}
+
 function objectFor(env, repo, number) {
   const key = repo + "#" + number;
   return env.ISSUE_LEASES.getByName(key);
@@ -106,6 +118,10 @@ async function route(request, env) {
   }
   if (url.pathname === "/claim" || url.pathname === "/renew" || url.pathname === "/release") {
     if (request.method !== "POST") return json({ error: "POST required" }, 405);
+    if (!env.HIVE_QUEUE_TOKEN) return json({ error: "queue write operations are disabled until HIVE_QUEUE_TOKEN is configured" }, 503);
+    const authorization = request.headers.get("authorization") || "";
+    const supplied = authorization.startsWith("Bearer ") ? authorization.slice(7) : "";
+    if (!(await tokenMatches(env.HIVE_QUEUE_TOKEN, supplied))) return json({ error: "unauthorized" }, 401);
     let body;
     try { body = await request.json(); } catch { return json({ error: "valid JSON body required" }, 400); }
     const repo = validRepo(body.repo, repos);
