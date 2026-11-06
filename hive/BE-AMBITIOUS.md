@@ -3,7 +3,7 @@
 Adapted from [DannyMac180/skills/be-ambitious](https://github.com/DannyMac180/skills/tree/main/be-ambitious) and Felix Rieseberg’s “How to be more ambitious” (Anthropic, 13 Oct 2026).
 
 **Standing direction for every Hive agent (Grok, Claude, ChatGPT, Tab, Instinct, etc.):**
-Before you rewrite, claim or execute any HubSpot task, FOI draft, catalogue entry, scene, or PR asset, answer the four questions for *this* field, then rewrite the task itself into the deeper version. Do not expand scope into a larger project; go one layer deeper on the same unit of work.
+Before you rewrite, claim or execute any GitHub project issue, private HubSpot correspondence draft, catalogue entry, scene, or PR asset, answer the four questions for *this* field, then sharpen the acceptance criteria on the canonical record. Do not expand scope into a larger project; go one layer deeper on the same unit of work.
 
 ## The four questions (always)
 
@@ -21,7 +21,7 @@ Apply these four questions in a compact preflight. For a small routine task, one
 4. **What, other than you or the model, would show the result is right?**  
    (Live page check, Git commit SHA + redeploy confirmation, HubSpot hs_lastmodifieddate, outside judge / second agent review, primary document citation that survives challenge, Stripe product live, e-book downloadable, etc.)
 
-Then rewrite the task prompt / acceptance criteria to demand exactly that deeper version. Stop and leave the rewritten criteria in the HubSpot changelog if the rewrite itself is the material step; otherwise execute the deeper version in the same turn.
+Then rewrite the canonical GitHub issue's acceptance criteria to demand exactly that deeper version. For a private recipient-facing draft, keep its full-context review record in HubSpot. Execute the deeper version in the same turn where practical.
 
 ## Ambition dimensions applied to Cedwyn
 
@@ -52,15 +52,15 @@ Assemble the crew mentally: forensic archivist + title researcher + documentary 
 
 ## Integration with existing Cedwyn rules
 
-- Still one material step per turn, one signed changelog line, HubSpot as system of record, no email send by agents, no private data in public GitHub, research paradigm (Welsh gentry / manorial house, test third-party title from primary records), closed leads, no-idle, claim/lease protocol unchanged.
+- Still one material step per turn and one signed changelog line. GitHub Issues are the system of record for public-safe project work; HubSpot is restricted to private recipient-facing drafts and exact-version correspondence reviews. No email send by agents, no private data in public GitHub, research paradigm (Welsh gentry / manorial house, test third-party title from primary records), closed leads, no-idle, and issue-keyed lease protocol.
 - The rewrite itself counts as the material step when it produces clearer acceptance criteria or a deeper sub-task that another agent (or the same agent on the next check-in) can execute.
 - Apply to every workstream: estate_history, FOI, catalogue, documentary, BIZDEV, website, procurement, Patagonia feasibility, PR (ebooks, Printify, Garden City plants, transparency via public email archive).
 
 ## Turn output and downstream conversion
 
-Every material turn leaves a compact, reusable work packet in the existing HubSpot task and canonical source system:
+Every material project turn leaves a compact, reusable work packet in its canonical GitHub issue and source system. Recipient-specific email review details remain in the private HubSpot draft record:
 
-1. **Outcome:** task ID, one-line deliverable, and why it advances the reconstruction or public value.
+1. **Outcome:** GitHub issue key (or private HubSpot draft reference only inside HubSpot), one-line deliverable, and why it advances the reconstruction or public value.
 2. **Source:** exact artifact/source IDs, original URL or reference, date, retrieval stage, provenance and limitations.
 3. **Finding:** what was verified, what is reported by another agent, what is inference, what remains unresolved, and the strongest contrary item checked.
 4. **Change:** exact catalogue/page/data/script/scene/ebook/PR or product file changed, with commit SHA or stable artifact ID; do not report a code or website change as live until the deployed page/build is checked.
@@ -74,18 +74,18 @@ When a verified finding has downstream value, feed the existing pipeline rather 
 - **Approved public material → commerce:** propose Printify designs only from owned/licensed assets; verify current Garden City products, stock and claims before linking. Mockups and drafts are not sales or revenue. No paid listing, purchase, order or spend without the owner's applicable approval.
 - **Correspondence → transparency:** record sent messages only from a verified Gmail Sent copy; link replies to the original thread and catalogue attachments once. Keep private correspondence, personal data, legal advice and unverified allegations out of public progress reporting. Existing no-agent-send rule remains in force; an agent's draft is not a sent enquiry.
 
-Do not force every finding into every output channel. One useful verified catalogue update is better than five thin derivative posts. Do not create a new HubSpot task for each downstream format unless it is a genuinely distinct deliverable with a clear owner and acceptance test.
+Do not force every finding into every output channel. One useful verified catalogue update is better than five thin derivative posts. Do not create a new GitHub issue for each downstream format unless it is a genuinely distinct, public-safe deliverable with a clear owner and acceptance test. Keep private correspondence in HubSpot.
 
 ## Completion and throughput measurement
 
-- Report two separate counts: **CRM closures** (tasks whose status/completion timestamp says COMPLETED) and **accepted completions** (tasks whose own acceptance criteria passed with durable external proof).
+- Report two separate counts: **raw GitHub/CRM closures** (issues closed or private CRM tasks marked complete) and **accepted completions** (the record's own acceptance criteria passed with durable external proof).
 - Also measure artifacts newly catalogued, genuine gaps resolved, verified replies ingested, site/build checks passed, scene/ebook/product outputs approved, and blockers released to another job. Never count copies, duplicate IDs, acknowledgement-only replies, task creation, status edits, raw leads or pageviews as completed research.
 - Baseline the prior seven days, then aim for at least a 10% increase in rolling seven-day **accepted completions** while maintaining the quality gate. If no trustworthy baseline exists, measure one week first; do not invent a target or lower the standard.
-- Each active agent check-in should produce at least one material work step when an eligible job exists. A routing/skip action is operational progress, but is not a completed deliverable. A task is COMPLETED only after its stated acceptance criteria pass; if only part is done, leave it open with the exact next step.
+- Each active agent check-in should produce at least one material work step when an eligible GitHub issue or authorised private correspondence turn exists. A routing/skip action is operational progress, but is not a completed deliverable. Close a GitHub issue only after its stated acceptance criteria pass; if only part is done, leave it open with the exact next step.
 - If the job queue contains work but the agent makes no material change, record why (lease conflict, missing access, owner decision, external dependency, source unavailable or quality failure). Do not hide inactivity behind a long status report.
 
 ## Success metric for the skill
 
-More HubSpot tasks reach COMPLETED with verified live evidence per day, under free-tier Cloudflare/GitHub limits, because each taken job yields a durable catalogue entry, a closed gap, an approved public output, or a precise next lead instead of a shallow draft.
+More GitHub project issues reach accepted closure with verified live evidence per day, while private recipient-facing drafts receive complete, multi-agent review in HubSpot. Each taken job yields a durable catalogue entry, a closed gap, an approved public output, or a precise next lead instead of a shallow draft.
 
 Signed: Grok (Hive seat), 2026-11-02.
