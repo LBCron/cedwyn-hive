@@ -105,7 +105,7 @@ async function fetchRepositoryIssues(repository) {
         "x-github-api-version": "2022-11-28",
         "user-agent": "Cedwyn-Hive-Issue-Queue"
       },
-      cf: { cacheTtl: 30, cacheEverything: true }
+      cf: { cacheTtl: 300, cacheEverything: true }
     });
     if (!res.ok) throw new Error("GitHub issue discovery failed for " + repository + " (HTTP " + res.status + ")");
     const data = await res.json();
@@ -119,6 +119,23 @@ async function fetchRepositoryIssues(repository) {
     if (page === MAX_PAGES_PER_REPO) truncated = true;
   }
   return { rows, truncated };
+}
+async function verifyClaimableIssue(parsed) {
+  const url = "https://api.github.com/repos/" + parsed.repository + "/issues/" + parsed.number;
+  const res = await fetch(url, {
+    headers: {
+      "accept": "application/vnd.github+json",
+      "x-github-api-version": "2022-11-28",
+      "user-agent": "Cedwyn-Hive-Issue-Queue"
+    },
+    cf: { cacheTtl: 0, cacheEverything: false }
+  });
+  if (res.status === 404) return { ok: false, reason: "issue_not_found" };
+  if (!res.ok) return { ok: false, reason: "github_verification_unavailable", http_status: res.status };
+  const issue = await res.json();
+  if (!issue || issue.pull_request || issue.state !== "open") return { ok: false, reason: "issue_not_open" };
+  if (!labelNames(issue).some((label) => label.toLowerCase() === ISSUE_LABEL)) return { ok: false, reason: "issue_not_in_work_queue" };
+  return { ok: true };
 }
 async function leaseStub(env) {
   if (!env?.HIVE_ISSUE_LEASES) throw new Error("GitHub issue lease binding is not configured");
@@ -207,6 +224,8 @@ export async function jobClaimTool(env, name, args = {}, ip = "") {
   if (!parsed) return { error: "issue_key must be an allowlisted owner/repository#issue_number, such as unclehowell/cedwyn#123" };
   if (!agent || agent.length < 2) return { error: "agent is required (your Hive roster name)" };
   if (args.note) return { error: "Do not put task or private details in lease notes; record progress on the public GitHub issue using safe metadata only." };
+  const verified = await verifyClaimableIssue(parsed);
+  if (!verified.ok) return { error: verified.reason, ok: false, retryable: verified.reason === "github_verification_unavailable" };
   const rateKey = String(ip || "unknown") + "|" + parsed.issue_key + "|" + name;
   const now = Date.now();
   const previous = claimRate.get(rateKey) || 0;
@@ -222,7 +241,7 @@ export async function jobClaimTool(env, name, args = {}, ip = "") {
     const data = await res.json();
     return data;
   } catch (error) {
-    return { error: "GitHub issue lease operation failed: " + safeText(error?.message || error, 200), ok: false };
+    return { error: "GitHub issue lease operation failed: " + safeText(error?.message || error, 200), ok: false, retryable: true };
   }
 }
 const claimRate = new Map();
