@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-06T17:59:24Z",
+ "updated": "2026-11-06T18:03:28Z",
  "schema": "metadata only: id, record, version, status, turn, open_issues, last_change, last_agent, rounds (versions written so far); events: [{at, draft, version, agent, event}], newest last. Never email text.",
  "drafts": [
   {
@@ -6932,8 +6932,8 @@
    "gmail_draft_id": null,
    "sent_at": null,
    "archive_url": null,
-   "version_reviews": null,
-   "version_distinct_agents": null,
+   "version_reviews": 0,
+   "version_distinct_agents": 0,
    "version_agents": [],
    "seat_agreements_version": null,
    "final_three_hat_version": null,
@@ -6943,7 +6943,9 @@
     "body": "Glamorgan Archives",
     "as_of": "2026-11-06T17:59:24Z",
     "note": "Board entry added from the HubSpot subject by board_sync.py; no context pack yet. Metadata only."
-   }
+   },
+   "pct": 0,
+   "pct_at": "2026-11-06T18:03:28Z"
   },
   {
    "id": "ordnance-survey-400197",
@@ -6961,8 +6963,8 @@
    "gmail_draft_id": null,
    "sent_at": null,
    "archive_url": null,
-   "version_reviews": null,
-   "version_distinct_agents": null,
+   "version_reviews": 0,
+   "version_distinct_agents": 0,
    "version_agents": [],
    "seat_agreements_version": null,
    "final_three_hat_version": null,
@@ -6972,7 +6974,9 @@
     "body": "Ordnance Survey",
     "as_of": "2026-11-06T17:59:24Z",
     "note": "Board entry added from the HubSpot subject by board_sync.py; no context pack yet. Metadata only."
-   }
+   },
+   "pct": 0,
+   "pct_at": "2026-11-06T18:03:28Z"
   }
  ],
  "synced_at": "2026-11-06T17:59:24Z",
