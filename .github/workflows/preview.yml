@@ -89,14 +89,25 @@ jobs:
         run: node --test queue-worker/test/lease-core.test.mjs
       - name: Build isolated Worker
         run: npx --yes wrangler@4 deploy --config queue-worker/wrangler.jsonc --name "$WORKER_NAME" --dry-run --outdir /tmp/queue-worker-build
+      - name: Check Cloudflare preview credentials
+        id: secrets
+        run: |
+          if [ -z "$CLOUDFLARE_API_TOKEN" ] || [ -z "$CLOUDFLARE_ACCOUNT_ID" ]; then
+            echo "::notice::Cloudflare GitHub Actions secrets are not configured; Worker deploy/smoke steps are skipped. Wrangler build and unit tests still run."
+            echo "ok=0" >> "$GITHUB_OUTPUT"
+          else
+            echo "ok=1" >> "$GITHUB_OUTPUT"
+          fi
       - name: Deploy isolated preview
         id: deploy
+        if: steps.secrets.outputs.ok == '1'
         run: |
           set -euo pipefail
           npx --yes wrangler@4 deploy --config queue-worker/wrangler.jsonc --name "$WORKER_NAME"
           URL="https://${WORKER_NAME}.righteous.workers.dev"
           echo "preview_url=$URL" >> "$GITHUB_OUTPUT"
       - name: Configure token and smoke-test preview
+        if: steps.secrets.outputs.ok == '1'
         env:
           PREVIEW_URL: ${{ steps.deploy.outputs.preview_url }}
         run: |
@@ -111,6 +122,7 @@ jobs:
           CODE=$(curl --silent --output /tmp/auth.json --write-out '%{http_code}' -X POST "$PREVIEW_URL/claim" -H "authorization: Bearer $TOKEN" -H 'content-type: application/json' --data '{"repo":"not-allowlisted/repo","issue_number":1,"agent":"preview-test"}')
           test "$CODE" = "400"
       - name: Comment isolated Worker preview
+        if: steps.secrets.outputs.ok == '1'
         uses: actions/github-script@v7
         with:
           script: |
