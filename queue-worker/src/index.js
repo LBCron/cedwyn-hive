@@ -143,9 +143,44 @@ async function route(request, env) {
 }
 
 export { IssueLease };
+function corsHeaders(request) {
+  const origin = request.headers.get("origin");
+  if (!origin) return null;
+  try {
+    const parsed = new URL(origin);
+    const host = parsed.hostname.toLowerCase();
+    if (parsed.protocol !== "https:" || !(host === "bucklerfamily.estate" || host.endsWith(".bucklerfamily.estate"))) return null;
+    return {
+      "access-control-allow-origin": origin,
+      "access-control-allow-methods": "GET, POST, OPTIONS",
+      "access-control-allow-headers": "Authorization, Content-Type",
+      "access-control-max-age": "600",
+      "vary": "Origin"
+    };
+  } catch {
+    return null;
+  }
+}
+
 export default {
   async fetch(request, env) {
-    try { return await route(request, env); }
-    catch (error) { return json({ error: "queue request failed", detail: String(error.message || error) }, 500); }
+    const cors = corsHeaders(request);
+    if (request.method === "OPTIONS") {
+      if (!cors) return json({ error: "origin not allowed" }, 403);
+      return new Response(null, { status: 204, headers: cors });
+    }
+    try {
+      const response = await route(request, env);
+      if (!cors) return response;
+      const headers = new Headers(response.headers);
+      for (const [key, value] of Object.entries(cors)) headers.set(key, value);
+      return new Response(response.body, { status: response.status, statusText: response.statusText, headers });
+    } catch (error) {
+      const response = json({ error: "queue request failed", detail: String(error.message || error) }, 500);
+      if (!cors) return response;
+      const headers = new Headers(response.headers);
+      for (const [key, value] of Object.entries(cors)) headers.set(key, value);
+      return new Response(response.body, { status: response.status, headers });
+    }
   }
 };
