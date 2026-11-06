@@ -86,7 +86,7 @@ jobs:
         with:
           node-version: 22
       - name: Lease contract tests
-        run: node --test queue-worker/test/lease-core.test.mjs
+        run: node --test queue-worker/test/*.test.mjs
       - name: Build isolated Worker
         run: npx --yes wrangler@4 deploy --config queue-worker/wrangler.jsonc --name "$WORKER_NAME" --dry-run --outdir /tmp/queue-worker-build
       - name: Check Cloudflare preview credentials
