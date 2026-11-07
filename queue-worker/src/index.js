@@ -1,10 +1,13 @@
 import { corsHeaders } from "./cors.js";
 import { IssueLease } from "./issue-lease.js";
+import { fetchAllSearchPages } from "./github-pagination.js";
 
 const API = "https://api.github.com";
 const LABEL = "hive:public";
 const MAX_REPOS = 30;
 const MAX_LIMIT = 100;
+const GITHUB_SEARCH_PAGE_SIZE = 100;
+const GITHUB_SEARCH_MAX_PAGES = 10;
 const DEFAULT_TTL = 60 * 60 * 1000;
 
 function json(data, status = 200, extra = {}) {
@@ -48,16 +51,17 @@ function publicIssue(item) {
 }
 
 async function githubIssues(repo, env) {
-  const label = encodeURIComponent(LABEL);
   const q = encodeURIComponent("repo:" + repo + " is:issue is:open label:" + LABEL);
-  const url = API + "/search/issues?q=" + q + "&per_page=100&sort=updated&order=desc";
-  const response = await fetch(url, {
-    headers: { accept: "application/vnd.github+json", "x-github-api-version": "2022-11-28", "user-agent": "cedwyn-hive-queue" },
-    cf: { cacheTtl: 30, cacheEverything: true }
-  });
-  if (!response.ok) throw new Error("GitHub issue search failed for " + repo + " (HTTP " + response.status + ")");
-  const payload = await response.json();
-  return (payload.items || []).filter(item => !item.pull_request && item.state === "open" &&
+  const items = await fetchAllSearchPages(async page => {
+    const url = API + "/search/issues?q=" + q + "&per_page=" + GITHUB_SEARCH_PAGE_SIZE + "&page=" + page + "&sort=updated&order=desc";
+    const response = await fetch(url, {
+      headers: { accept: "application/vnd.github+json", "x-github-api-version": "2022-11-28", "user-agent": "cedwyn-hive-queue" },
+      cf: { cacheTtl: 30, cacheEverything: true }
+    });
+    if (!response.ok) throw new Error("GitHub issue search failed for " + repo + " (HTTP " + response.status + ")");
+    return response.json();
+  }, { pageSize: GITHUB_SEARCH_PAGE_SIZE, maxPages: GITHUB_SEARCH_MAX_PAGES });
+  return items.filter(item => !item.pull_request && item.state === "open" &&
     (item.labels || []).some(x => String(x.name || "").toLowerCase() === LABEL)).map(publicIssue);
 }
 
