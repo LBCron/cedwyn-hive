@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-07T12:34:51Z",
+ "updated": "2026-11-07T12:39:19Z",
  "schema": "metadata only: id, record, version, status, turn, open_issues, last_change, last_agent, rounds (versions written so far); events: [{at, draft, version, agent, event}], newest last. Never email text.",
  "drafts": [
   {
@@ -6702,8 +6702,8 @@
    "gmail_draft_id": null,
    "sent_at": null,
    "archive_url": null,
-   "version_reviews": null,
-   "version_distinct_agents": null,
+   "version_reviews": 0,
+   "version_distinct_agents": 0,
    "version_agents": [],
    "seat_agreements_version": null,
    "final_three_hat_version": null,
@@ -6713,7 +6713,9 @@
     "body": "Welsh Government",
     "as_of": "2026-11-07T12:34:51Z",
     "note": "Board entry added from the HubSpot subject by board_sync.py; no context pack yet. Metadata only."
-   }
+   },
+   "pct": 0,
+   "pct_at": "2026-11-07T12:39:19Z"
   },
   {
    "id": "valuation-office-agency-598727",
@@ -6731,8 +6733,8 @@
    "gmail_draft_id": null,
    "sent_at": null,
    "archive_url": null,
-   "version_reviews": null,
-   "version_distinct_agents": null,
+   "version_reviews": 0,
+   "version_distinct_agents": 0,
    "version_agents": [],
    "seat_agreements_version": null,
    "final_three_hat_version": null,
@@ -6742,7 +6744,9 @@
     "body": "Valuation Office Agency",
     "as_of": "2026-11-07T12:34:51Z",
     "note": "Board entry added from the HubSpot subject by board_sync.py; no context pack yet. Metadata only."
-   }
+   },
+   "pct": 0,
+   "pct_at": "2026-11-07T12:39:19Z"
   },
   {
    "id": "ministry-of-housing-communities-and-local-govern-820847",
@@ -6760,8 +6764,8 @@
    "gmail_draft_id": null,
    "sent_at": null,
    "archive_url": null,
-   "version_reviews": null,
-   "version_distinct_agents": null,
+   "version_reviews": 0,
+   "version_distinct_agents": 0,
    "version_agents": [],
    "seat_agreements_version": null,
    "final_three_hat_version": null,
@@ -6771,7 +6775,9 @@
     "body": "Ministry of Housing, Communities and Local Government",
     "as_of": "2026-11-07T12:34:51Z",
     "note": "Board entry added from the HubSpot subject by board_sync.py; no context pack yet. Metadata only."
-   }
+   },
+   "pct": 0,
+   "pct_at": "2026-11-07T12:39:19Z"
   },
   {
    "id": "health-and-safety-executive-669483",
@@ -6789,8 +6795,8 @@
    "gmail_draft_id": null,
    "sent_at": null,
    "archive_url": null,
-   "version_reviews": null,
-   "version_distinct_agents": null,
+   "version_reviews": 0,
+   "version_distinct_agents": 0,
    "version_agents": [],
    "seat_agreements_version": null,
    "final_three_hat_version": null,
@@ -6800,7 +6806,9 @@
     "body": "Health and Safety Executive",
     "as_of": "2026-11-07T12:34:51Z",
     "note": "Board entry added from the HubSpot subject by board_sync.py; no context pack yet. Metadata only."
-   }
+   },
+   "pct": 0,
+   "pct_at": "2026-11-07T12:39:19Z"
   },
   {
    "id": "hmrc-information-rights-unit-878411",
@@ -6818,8 +6826,8 @@
    "gmail_draft_id": null,
    "sent_at": null,
    "archive_url": null,
-   "version_reviews": null,
-   "version_distinct_agents": null,
+   "version_reviews": 0,
+   "version_distinct_agents": 0,
    "version_agents": [],
    "seat_agreements_version": null,
    "final_three_hat_version": null,
@@ -6829,7 +6837,9 @@
     "body": "HMRC (Information Rights Unit)",
     "as_of": "2026-11-07T12:34:51Z",
     "note": "Board entry added from the HubSpot subject by board_sync.py; no context pack yet. Metadata only."
-   }
+   },
+   "pct": 0,
+   "pct_at": "2026-11-07T12:39:19Z"
   },
   {
    "id": "the-national-archives-281120",
@@ -6847,8 +6857,8 @@
    "gmail_draft_id": null,
    "sent_at": null,
    "archive_url": null,
-   "version_reviews": null,
-   "version_distinct_agents": null,
+   "version_reviews": 0,
+   "version_distinct_agents": 0,
    "version_agents": [],
    "seat_agreements_version": null,
    "final_three_hat_version": null,
@@ -6858,7 +6868,9 @@
     "body": "The National Archives",
     "as_of": "2026-11-07T12:34:51Z",
     "note": "Board entry added from the HubSpot subject by board_sync.py; no context pack yet. Metadata only."
-   }
+   },
+   "pct": 0,
+   "pct_at": "2026-11-07T12:39:19Z"
   },
   {
    "id": "the-national-archives-474429",
@@ -6876,8 +6888,8 @@
    "gmail_draft_id": null,
    "sent_at": null,
    "archive_url": null,
-   "version_reviews": null,
-   "version_distinct_agents": null,
+   "version_reviews": 0,
+   "version_distinct_agents": 0,
    "version_agents": [],
    "seat_agreements_version": null,
    "final_three_hat_version": null,
@@ -6887,7 +6899,9 @@
     "body": "The National Archives",
     "as_of": "2026-11-07T12:34:51Z",
     "note": "Board entry added from the HubSpot subject by board_sync.py; no context pack yet. Metadata only."
-   }
+   },
+   "pct": 0,
+   "pct_at": "2026-11-07T12:39:19Z"
   },
   {
    "id": "nlw-099838",
@@ -6905,8 +6919,8 @@
    "gmail_draft_id": null,
    "sent_at": null,
    "archive_url": null,
-   "version_reviews": null,
-   "version_distinct_agents": null,
+   "version_reviews": 0,
+   "version_distinct_agents": 0,
    "version_agents": [],
    "seat_agreements_version": null,
    "final_three_hat_version": null,
@@ -6916,7 +6930,9 @@
     "body": "NLW",
     "as_of": "2026-11-07T12:34:51Z",
     "note": "Board entry added from the HubSpot subject by board_sync.py; no context pack yet. Metadata only."
-   }
+   },
+   "pct": 0,
+   "pct_at": "2026-11-07T12:39:19Z"
   },
   {
    "id": "vale-of-glamorgan-council-democratic-scrutiny-se-159627",
