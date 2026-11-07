@@ -34,3 +34,12 @@ test("fails closed if GitHub's 1,000-result search cap would truncate the queue"
     items:Array.from({length:100},(_,i)=>({id:(page-1)*100+i}))
   })),/1,000-result paging cap/);
 });
+
+test("refuses page overlaps that would leave the unique issue count short", async () => {
+  await assert.rejects(()=>fetchAllSearchPages(async page=>({
+    total_count:150,
+    items:page===1
+      ? Array.from({length:100},(_,i)=>({id:i+1}))
+      : Array.from({length:50},(_,i)=>({id:i+76}))
+  })),/overlapped or skipped records/);
+});
