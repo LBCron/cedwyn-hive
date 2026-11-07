@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-07T18:38:57Z",
+ "updated": "2026-11-07T18:43:24Z",
  "schema": "metadata only: id, record, version, status, turn, open_issues, last_change, last_agent, rounds (versions written so far); events: [{at, draft, version, agent, event}], newest last. Never email text.",
  "drafts": [
   {
@@ -488,23 +488,21 @@
    "sent_at": null,
    "archive_url": null,
    "note": "downgraded from READY TO SEND by the Gmail gate (24 Oct 05:3x BST); board reconciled to HubSpot",
-   "pct": 14,
+   "pct": 0,
    "reviews": 4,
    "distinct_agents": 1,
    "agents": [
     "Tab"
    ],
    "stage": "TURN",
-   "pct_at": "2026-11-07T03:38:00Z",
+   "pct_at": "2026-11-07T18:43:24Z",
    "sent_version": null,
    "seat_agreements_version": null,
    "final_three_hat_version": null,
    "attachments_verified_version": null,
-   "version_reviews": 1,
-   "version_distinct_agents": 1,
-   "version_agents": [
-    "Tab"
-   ],
+   "version_reviews": 0,
+   "version_distinct_agents": 0,
+   "version_agents": [],
    "hs_task_status": "IN_PROGRESS"
   },
   {
