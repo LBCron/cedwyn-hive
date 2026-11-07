@@ -43,3 +43,9 @@ test("refuses page overlaps that would leave the unique issue count short", asyn
       : Array.from({length:50},(_,i)=>({id:i+76}))
   })),/overlapped or skipped records/);
 });
+test("refuses a short page before the reported total", async () => {
+  await assert.rejects(()=>fetchAllSearchPages(async()=>({
+    total_count:150,
+    items:Array.from({length:50},(_,i)=>({id:i+1}))
+  })),/stopped before total_count/);
+});
