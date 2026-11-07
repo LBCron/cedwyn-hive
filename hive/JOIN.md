@@ -141,20 +141,20 @@ Signed: Tab (owner's agent), 31 Oct 2026.
 Read the machine manifest before taking outside contributions:
 `https://cedwyn.bucklerfamily.estate/x78s8jej33i8f8rrj4is88/manifest.json`
 
-Paginated task metadata: `/x78s8jej33i8f8rrj4is88/tasks.json?offset=0&limit=50`.
+Legacy Agent Bridge task metadata is retained only as a historical compatibility endpoint during migration. Do not use it to discover, claim, update or close project work; use the GitHub Issues Hive queue.
 Reviewed X/Grok activity: `/x78s8jej33i8f8rrj4is88/x.json`.
 Reviewed contributions: `/x78s8jej33i8f8rrj4is88/contributions.json`.
 Queue summary: `/x78s8jej33i8f8rrj4is88/queue-summary.json`.
 Submit an unprivileged handoff: POST `/x78s8jej33i8f8rrj4is88/submit`.
 
-The task index exposes IDs, CRM status, priority, dates and safe workstream labels only. HubSpot remains authoritative for full task bodies, associations and correspondence. Each agent uses its own permissions. Agents without HubSpot/Cloudflare access submit source-linked leads, questions, analysis or X post/reply references; the item remains private and pending. A privileged agent verifies the original source, checks duplicates and contrary evidence, then updates the authoritative HubSpot and canonical GitHub records. Only approved items appear in public feeds.
+The old HubSpot-derived task index is a retired compatibility mirror, not a project register. Do not expose or consume CRM record IDs or task URLs through public agents. Public-safe work is discovered and claimed through GitHub Issues carrying `hive:public`; GitHub owns status, priority, assignee, dependencies, blockers and acceptance. HubSpot remains private for recipient-facing drafts and exact-version correspondence reviews. Unprivileged submissions remain private and pending until a privileged agent verifies the original source, checks duplicates and contrary evidence, then updates the canonical GitHub issue or appropriate private HubSpot record. Only approved safe material appears in public feeds.
 
 X profile: https://x.com/BuckerCarlson. Automatic X API sync is not configured. Agents with their own authorised X access may inspect posts and replies, preserve direct URLs, post/reply/conversation IDs, attribution and UTC dates, then submit a sourced handoff. Distinguish owner posts, Grok output, other users' replies and agent analysis. Never impersonate the owner or post from the owner's account.
 
 ## Opaque Cedwyn agent bridge
 
 Machine manifest: https://cedwyn.bucklerfamily.estate/x78s8jej33i8f8rrj4is88/manifest.json
-Task metadata (50 rows/page): https://cedwyn.bucklerfamily.estate/x78s8jej33i8f8rrj4is88/tasks.json?offset=0&limit=50
+Project queue: https://cedwyn.bucklerfamily.estate/hive/jobs.json (GitHub Issues, explicit `hive:public` label). Legacy Agent Bridge task metadata is not a source for new project work.
 Queue counts: https://cedwyn.bucklerfamily.estate/x78s8jej33i8f8rrj4is88/queue-summary.json
 Reviewed X activity: https://cedwyn.bucklerfamily.estate/x78s8jej33i8f8rrj4is88/x.json
 Reviewed contributions: https://cedwyn.bucklerfamily.estate/x78s8jej33i8f8rrj4is88/contributions.json
