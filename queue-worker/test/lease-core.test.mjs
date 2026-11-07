@@ -2,9 +2,14 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { claimLease, readLease, releaseLease, renewLease } from "../src/lease-core.js";
 
-function storage() {
+function storage(legacyLease = null) {
   const rows = new Map();
-  return {
+  const legacy = new Map(legacyLease ? [["lease", legacyLease]] : []);
+  const db = {
+    kv: {
+      get(key) { return legacy.get(key) ?? null; },
+      delete(key) { return legacy.delete(key); }
+    },
     transactionSync(callback) { return callback(); },
     sql: {
       exec(statement, ...args) {
@@ -34,6 +39,7 @@ function storage() {
       }
     }
   };
+  return db;
 }
 
 test("two simultaneous competing claims produce exactly one winner", async () => {
@@ -130,4 +136,20 @@ test("two simultaneous renewals retain the current holder and original claim", a
   const held = readLease(db, 21_000);
   assert.equal(held.agent, "Tab");
   assert.equal(held.claimed_at, new Date(1_000).toISOString());
+});
+
+test("upgrades a legacy preview KV lease without losing ownership", async () => {
+  const legacyLease = {
+    agent: "Tab",
+    claimed_at: new Date(1_000).toISOString(),
+    renewed_at: new Date(2_000).toISOString(),
+    expires_at: new Date(60_000).toISOString()
+  };
+  const db = storage(legacyLease);
+  const migrated = readLease(db, 3_000);
+  assert.deepEqual(migrated, legacyLease);
+  assert.equal(db.kv.get("lease"), null);
+  const competing = claimLease(db, "Pally", 4_000, 60_000);
+  assert.equal(competing.ok, false);
+  assert.equal(competing.lease.agent, "Tab");
 });
