@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-07T15:33:15Z",
+ "updated": "2026-11-07T15:37:43Z",
  "schema": "metadata only: id, record, version, status, turn, open_issues, last_change, last_agent, rounds (versions written so far); events: [{at, draft, version, agent, event}], newest last. Never email text.",
  "drafts": [
   {
@@ -275,7 +275,7 @@
    "gmail_draft_id": null,
    "sent_at": null,
    "archive_url": null,
-   "pct": 0,
+   "pct": 14,
    "reviews": 8,
    "distinct_agents": 2,
    "agents": [
@@ -283,14 +283,16 @@
     "Tab"
    ],
    "stage": "TURN",
-   "pct_at": "2026-10-27T10:03:55Z",
+   "pct_at": "2026-11-07T15:37:43Z",
    "sent_version": null,
    "seat_agreements_version": null,
    "final_three_hat_version": null,
    "attachments_verified_version": null,
-   "version_reviews": 0,
-   "version_distinct_agents": 0,
-   "version_agents": [],
+   "version_reviews": 1,
+   "version_distinct_agents": 1,
+   "version_agents": [
+    "Grok"
+   ],
    "hs_task_status": "WAITING",
    "last_action_by": "Grok",
    "last_action_at": "2026-11-07T15:09:14Z"
