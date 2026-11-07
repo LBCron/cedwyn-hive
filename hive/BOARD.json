@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-07T06:33:36Z",
+ "updated": "2026-11-07T06:37:57Z",
  "schema": "metadata only: id, record, version, status, turn, open_issues, last_change, last_agent, rounds (versions written so far); events: [{at, draft, version, agent, event}], newest last. Never email text.",
  "drafts": [
   {
@@ -6445,11 +6445,9 @@
    "gmail_draft_id": null,
    "sent_at": null,
    "archive_url": null,
-   "version_reviews": 1,
-   "version_distinct_agents": 1,
-   "version_agents": [
-    "Grok"
-   ],
+   "version_reviews": 0,
+   "version_distinct_agents": 0,
+   "version_agents": [],
    "seat_agreements_version": null,
    "final_three_hat_version": null,
    "attachments_verified_version": null,
@@ -6459,8 +6457,8 @@
     "as_of": "2026-11-05T01:42:22Z",
     "note": "Board entry added from the HubSpot subject by board_sync.py; no context pack yet. Metadata only."
    },
-   "pct": 14,
-   "pct_at": "2026-11-05T01:46:29Z",
+   "pct": 0,
+   "pct_at": "2026-11-07T06:37:57Z",
    "hs_task_status": "IN_PROGRESS"
   },
   {
@@ -7377,8 +7375,8 @@
    "gmail_draft_id": null,
    "sent_at": null,
    "archive_url": null,
-   "version_reviews": null,
-   "version_distinct_agents": null,
+   "version_reviews": 0,
+   "version_distinct_agents": 0,
    "version_agents": [],
    "seat_agreements_version": null,
    "final_three_hat_version": null,
@@ -7388,7 +7386,9 @@
     "body": "National Library of Scotland (Map Collections)",
     "as_of": "2026-11-07T06:33:36Z",
     "note": "Board entry added from the HubSpot subject by board_sync.py; no context pack yet. Metadata only."
-   }
+   },
+   "pct": 0,
+   "pct_at": "2026-11-07T06:37:57Z"
   },
   {
    "id": "south-wales-record-society-468801",
@@ -7406,8 +7406,8 @@
    "gmail_draft_id": null,
    "sent_at": null,
    "archive_url": null,
-   "version_reviews": null,
-   "version_distinct_agents": null,
+   "version_reviews": 0,
+   "version_distinct_agents": 0,
    "version_agents": [],
    "seat_agreements_version": null,
    "final_three_hat_version": null,
@@ -7417,7 +7417,9 @@
     "body": "South Wales Record Society",
     "as_of": "2026-11-07T06:33:36Z",
     "note": "Board entry added from the HubSpot subject by board_sync.py; no context pack yet. Metadata only."
-   }
+   },
+   "pct": 0,
+   "pct_at": "2026-11-07T06:37:57Z"
   }
  ],
  "synced_at": "2026-11-07T06:33:36Z",
