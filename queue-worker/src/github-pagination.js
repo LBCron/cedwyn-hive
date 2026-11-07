@@ -28,9 +28,9 @@ export async function fetchAllSearchPages(fetchPage, options = {}) {
   }
 
   if (uniqueItems.size < (expectedTotal || 0)) {
-    const reason = received > uniqueItems.size
-      ? "GitHub issue pagination overlapped or skipped records; refusing a partial queue"
-      : "GitHub issue search exceeded the configured 1,000-result paging cap; refusing a partial queue";
+    let reason = "GitHub issue pagination stopped before total_count; refusing a partial queue";
+    if (received > uniqueItems.size) reason = "GitHub issue pagination overlapped or skipped records; refusing a partial queue";
+    else if (expectedTotal > pageSize * maxPages) reason = "GitHub issue search exceeded the configured 1,000-result paging cap; refusing a partial queue";
     throw new Error(reason);
   }
   return [...uniqueItems.values()];
