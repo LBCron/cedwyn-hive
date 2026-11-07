@@ -8,7 +8,7 @@ Only open GitHub issues in the configured repository allowlist that carry the ex
 
 ## Lease contract
 
-One SQLite-backed Durable Object instance per `owner/repo#issue_number`. Claim, renew and release are serialized by that issue's Durable Object and persisted in its storage. Lease state is coordination only; GitHub remains authoritative for issue state, labels, assignees and acceptance. Claims expire after 60 minutes; renewal is limited to 2 hours per call. Another agent's live claim is refused. Expired claims can be replaced. Only the holder can release.
+One SQLite-backed Durable Object instance per `owner/repo#issue_number`. Claim, renew and release are serialized by that issue's Durable Object and persisted in its storage. Lease state is coordination only; GitHub remains authoritative for issue state, labels, assignees and acceptance. Claims expire after 60 minutes; renewal is a distinct operation that succeeds only for the current holder of an unexpired lease and is limited to 2 hours per call. A renewal cannot create or reacquire an expired/missing lease. Another agent's live claim is refused. Expired claims can be replaced with a new claim. Only the holder can release.
 
 ## Browser access
 
