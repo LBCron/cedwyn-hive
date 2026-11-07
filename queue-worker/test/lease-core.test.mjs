@@ -8,7 +8,7 @@ function storage() {
     transactionSync(callback) { return callback(); },
     sql: {
       exec(statement, ...args) {
-        const sql = statement.replace(/\\s+/g, " ").trim().toUpperCase();
+        const sql = statement.replace(/\s+/g, " ").trim().toUpperCase();
         if (sql.startsWith("CREATE TABLE")) return { toArray: () => [] };
         if (sql.startsWith("SELECT")) {
           return { toArray: () => rows.has(1) ? [{ ...rows.get(1) }] : [] };
