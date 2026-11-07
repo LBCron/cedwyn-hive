@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { claimLease, readLease, releaseLease } from "../src/lease-core.js";
+import { claimLease, readLease, releaseLease, renewLease } from "../src/lease-core.js";
 
 function storage() {
   const values = new Map();
@@ -50,4 +50,33 @@ test("lease expiry is bounded and agent text is sanitised", async () => {
   const result = await claimLease(db, " <Tab>\n", 1_000, 99 * 60 * 60 * 1000);
   assert.equal(result.lease.agent, "Tab");
   assert.equal(Date.parse(result.lease.expires_at) - 1_000, 2 * 60 * 60 * 1000);
+});
+
+test("renew requires a current unexpired lease", async () => {
+  const db = storage();
+  const missing = await renewLease(db, "Tab", 1_000, 60_000);
+  assert.equal(missing.ok, false);
+  assert.equal(missing.error, "no active lease to renew");
+
+  await claimLease(db, "Tab", 2_000, 60_000);
+  const wrongAgent = await renewLease(db, "Pally", 3_000, 60_000);
+  assert.equal(wrongAgent.ok, false);
+  assert.equal(wrongAgent.error, "only the current lease holder can renew");
+
+  const renewed = await renewLease(db, "Tab", 30_000, 120_000);
+  assert.equal(renewed.ok, true);
+  assert.equal(renewed.lease.claimed_at, new Date(2_000).toISOString());
+  assert.equal(renewed.lease.renewed_at, new Date(30_000).toISOString());
+  assert.equal(renewed.lease.expires_at, new Date(150_000).toISOString());
+});
+
+test("an expired lease cannot be renewed, but can be claimed afresh", async () => {
+  const db = storage();
+  await claimLease(db, "Tab", 1_000, 60_000);
+  const expired = await renewLease(db, "Tab", 61_001, 60_000);
+  assert.equal(expired.ok, false);
+  assert.equal(expired.error, "no active lease to renew");
+  const next = await claimLease(db, "Pally", 61_002, 60_000);
+  assert.equal(next.ok, true);
+  assert.equal(next.lease.agent, "Pally");
 });
