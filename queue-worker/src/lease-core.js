@@ -33,6 +33,25 @@ export async function claimLease(storage, agentValue, now = Date.now(), ttlMs = 
   return { ok: true, lease };
 }
 
+export async function renewLease(storage, agentValue, now = Date.now(), ttlMs = DEFAULT_TTL_MS) {
+  const agent = cleanAgent(agentValue);
+  if (!agent) return { ok: false, error: "agent is required" };
+  const current = await readLease(storage, now);
+  if (!current) return { ok: false, error: "no active lease to renew" };
+  if (current.agent !== agent) {
+    return { ok: false, error: "only the current lease holder can renew", lease: current };
+  }
+  const ttl = Math.max(60_000, Math.min(MAX_TTL_MS, Number(ttlMs) || DEFAULT_TTL_MS));
+  const lease = {
+    agent,
+    claimed_at: current.claimed_at,
+    renewed_at: new Date(now).toISOString(),
+    expires_at: new Date(now + ttl).toISOString()
+  };
+  await storage.put(LEASE_KEY, lease);
+  return { ok: true, lease };
+}
+
 export async function releaseLease(storage, agentValue, now = Date.now()) {
   const agent = cleanAgent(agentValue);
   if (!agent) return { ok: false, error: "agent is required" };

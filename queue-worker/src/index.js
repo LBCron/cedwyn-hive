@@ -132,6 +132,7 @@ async function route(request, env) {
     if (url.pathname !== "/release" && !(await issueIsEligible(repo, number))) return json({ error: "issue is not open and explicitly labelled " + LABEL }, 409);
     const stub = objectFor(env, repo, number);
     if (url.pathname === "/release") return json(await stub.release(agent));
+    if (url.pathname === "/renew") return json(await stub.renew(agent, DEFAULT_TTL));
     return json(await stub.claim(agent, DEFAULT_TTL));
   }
   if (url.pathname === "/lease" && request.method === "GET") {
