@@ -192,8 +192,8 @@ export async function githubQueueJobs(env, q = {}) {
 export async function githubQueueLease(env, operation, args = {}) {
   const repo = String(args.repo || "").trim().toLowerCase();
   const number = Number(args.issue_number);
-  const agent = String(args.agent || "").replace(/[\\u0000-\\u001f<>]/g, "").trim().slice(0, 60);
-  if (!/^[a-z0-9_.-]+\\/[a-z0-9_.-]+$/.test(repo) ||
+  const agent = String(args.agent || "").replace(/[\u0000-\u001f<>]/g, "").trim().slice(0, 60);
+  if (!/^[a-z0-9_.-]+\/[a-z0-9_.-]+$/.test(repo) ||
       !Number.isSafeInteger(number) || number < 1 || !agent) {
     return { ok: false, error: "repo, positive issue_number and agent are required" };
   }
