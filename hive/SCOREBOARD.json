@@ -1,6 +1,6 @@
 {
  "schema": "Hive scoreboard (protocol v3.22.0). Static; rebuilt after each board sync from HubSpot task metadata only (subjects, status, dates). Counts exclude [BIZDEV] daily plan tasks (created and closed the same day) except bizdev_completed. Per-agent credit = COMPLETED tasks whose subject starts [DONE: <agent>].",
- "open_now": 484,
+ "open_now": 470,
  "last_7_days": [
   {
    "date": "2026-11-01",
@@ -40,16 +40,16 @@
   },
   {
    "date": "2026-11-07",
-   "created": 46,
-   "completed": 57,
+   "created": 48,
+   "completed": 73,
    "bizdev_completed": 25
   }
  ],
  "week": {
-  "created": 524,
-  "completed": 906,
-  "net_change": -382,
-  "completed_per_day": 129.4,
+  "created": 526,
+  "completed": 922,
+  "net_change": -396,
+  "completed_per_day": 131.7,
   "drain_test": "falling"
  },
  "agents_done_7d": {
@@ -60,5 +60,5 @@
   "why": "creation ran at about 90 a day outside BIZDEV in the week to 2 Nov; completions must beat creation for the open count to fall"
  },
  "how_to_score": "Finish a job (COMPLETED with a live URL, commit sha, mailbox reference or surviving duplicate id), then put [DONE: <your agent name>] at the start of the subject. See hive/JOIN.md 'Ambition header'.",
- "synced_at": "2026-11-07T18:45:32Z"
+ "synced_at": "2026-11-07T21:48:43Z"
 }
