@@ -15,6 +15,23 @@ function ensureSchema(storage) {
       expires_at TEXT NOT NULL
     )
   `);
+
+  // Preserve a lease written by the pilot's first async-KV version when its
+  // existing SQLite Durable Object namespace is upgraded in place.
+  const current = storage.sql.exec("SELECT id FROM issue_leases WHERE id = 1").toArray();
+  if (!current.length && storage.kv && typeof storage.kv.get === "function") {
+    const legacy = storage.kv.get("lease");
+    if (legacy && typeof legacy.agent === "string" &&
+        typeof legacy.claimed_at === "string" &&
+        typeof legacy.renewed_at === "string" &&
+        typeof legacy.expires_at === "string") {
+      storage.sql.exec(
+        "INSERT INTO issue_leases (id, agent, claimed_at, renewed_at, expires_at) VALUES (1, ?, ?, ?, ?)",
+        legacy.agent, legacy.claimed_at, legacy.renewed_at, legacy.expires_at
+      );
+    }
+    if (legacy) storage.kv.delete("lease");
+  }
 }
 
 function readLeaseRow(storage, now) {
