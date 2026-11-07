@@ -84,7 +84,7 @@ test("only the current holder can release a live lease", async () => {
 
 test("lease expiry is bounded and agent text is sanitised", async () => {
   const db = storage();
-  const result = await claimLease(db, " <Tab>\\n", 1_000, 99 * 60 * 60 * 1000);
+  const result = await claimLease(db, " <Tab>" + String.fromCharCode(10), 1_000, 99 * 60 * 60 * 1000);
   assert.equal(result.lease.agent, "Tab");
   assert.equal(Date.parse(result.lease.expires_at) - 1_000, 2 * 60 * 60 * 1000);
 });
