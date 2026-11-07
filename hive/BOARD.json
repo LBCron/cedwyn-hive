@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-06T21:53:28Z",
+ "updated": "2026-11-07T00:33:05Z",
  "schema": "metadata only: id, record, version, status, turn, open_issues, last_change, last_agent, rounds (versions written so far); events: [{at, draft, version, agent, event}], newest last. Never email text.",
  "drafts": [
   {
@@ -365,7 +365,7 @@
    "status": "TURN: Claude",
    "turn": "Claude (per HubSpot subject, updated 2026-10-27T16:13Z by Grok skip/route)",
    "open_issues": null,
-   "last_change": "2026-11-04T20:19:49Z",
+   "last_change": "2026-11-06T23:09:31Z",
    "last_agent": "Claude",
    "rounds": 5,
    "context": {
@@ -764,12 +764,12 @@
   {
    "id": "hmcts-cardiff-1955-1962-records",
    "record": "HubSpot task 532683919557",
-   "version": "v0.3.0",
-   "status": "TURN: Claude",
-   "turn": "Claude (per HubSpot subject, read 2026-10-27T22:11Z)",
+   "version": "v0.3.1",
+   "status": "TURN: ChatGPT",
+   "turn": "ChatGPT (per HubSpot subject, read 2026-11-07T00:33Z)",
    "open_issues": 2,
-   "last_change": "2026-11-04T20:16:10Z",
-   "last_agent": "Tab",
+   "last_change": "2026-11-07T00:14:11Z",
+   "last_agent": "Claude",
    "rounds": 3,
    "context": {
     "body": "HMCTS / Ministry of Justice",
@@ -1935,11 +1935,11 @@
   {
    "id": "vale-of-glamorgan-council-440921",
    "record": "HubSpot task 533786440921",
-   "version": "v0.2.5",
-   "status": "TURN: ChatGPT",
-   "turn": "ChatGPT (per HubSpot subject, read 2026-10-27T10:31Z)",
+   "version": "v0.2.7",
+   "status": "TURN: Claude",
+   "turn": "Claude (per HubSpot subject, read 2026-11-07T00:33Z)",
    "open_issues": null,
-   "last_change": "2026-11-04T20:13:58Z",
+   "last_change": "2026-11-07T00:15:53Z",
    "last_agent": "ChatGPT",
    "rounds": null,
    "tier_since": "2026-10-27T08:48:07Z",
@@ -4600,12 +4600,12 @@
   {
    "id": "prc-g6-proposed-correction-to-wiki-page-1097-t21-923316",
    "record": "HubSpot task 535889923316",
-   "version": "v0.1.0",
+   "version": "v0.1.1",
    "status": "TURN: Claude",
    "turn": "Claude (per HubSpot subject, read 2026-10-29T22:47Z)",
    "open_issues": null,
-   "last_change": "2026-11-06T12:01:20Z",
-   "last_agent": null,
+   "last_change": "2026-11-06T22:00:40Z",
+   "last_agent": "Claude",
    "rounds": null,
    "tier_since": "2026-10-29T22:47:13Z",
    "tier": "working",
@@ -5424,12 +5424,12 @@
   {
    "id": "glamorgan-archives-669848",
    "record": "HubSpot task 536905669848",
-   "version": "v0.4.1",
+   "version": "v0.4.2",
    "status": "TURN: Claude",
    "turn": "Claude (per HubSpot subject, read 2026-11-02T09:44Z)",
    "open_issues": null,
-   "last_change": "2026-11-04T20:16:02Z",
-   "last_agent": "ChatGPT",
+   "last_change": "2026-11-06T23:09:26Z",
+   "last_agent": "Claude",
    "rounds": null,
    "tier_since": "2026-10-31T21:30:24Z",
    "tier": "working",
@@ -5553,11 +5553,11 @@
   {
    "id": "bp-bp-archive-cc-jack-sheehy-833548",
    "record": "HubSpot task 537227833548",
-   "version": "v0.1.3",
-   "status": "OTHER AGENT'S TURN",
-   "turn": "any other agent (per HubSpot subject, read 2026-11-02T21:59Z)",
+   "version": "v0.1.4",
+   "status": "TURN: ChatGPT",
+   "turn": "ChatGPT (per HubSpot subject, read 2026-11-07T00:33Z)",
    "open_issues": null,
-   "last_change": "2026-11-04T20:16:10Z",
+   "last_change": "2026-11-07T00:23:26Z",
    "last_agent": null,
    "rounds": null,
    "tier_since": "2026-11-02T21:59:12Z",
@@ -5646,11 +5646,11 @@
   {
    "id": "mhclg-325462",
    "record": "HubSpot task 537302325462",
-   "version": "v0.1.1",
-   "status": "OTHER AGENT'S TURN",
-   "turn": "any other agent (per HubSpot subject, read 2026-11-03T09:41Z)",
+   "version": "v0.1.2",
+   "status": "TURN: ChatGPT",
+   "turn": "ChatGPT (per HubSpot subject, read 2026-11-07T00:33Z)",
    "open_issues": null,
-   "last_change": "2026-11-04T20:16:06Z",
+   "last_change": "2026-11-07T00:03:26Z",
    "last_agent": null,
    "rounds": null,
    "tier_since": "2026-11-03T09:41:04Z",
@@ -6923,7 +6923,7 @@
    "status": "OTHER AGENT'S TURN",
    "turn": "any other agent (per HubSpot subject, read 2026-11-06T17:59Z)",
    "open_issues": null,
-   "last_change": "2026-11-06T17:16:12Z",
+   "last_change": "2026-11-06T23:09:29Z",
    "last_agent": null,
    "rounds": null,
    "tier_since": "2026-11-06T17:59:24Z",
@@ -7103,11 +7103,11 @@
    "pct_at": "2026-11-06T21:53:28Z"
   }
  ],
- "synced_at": "2026-11-06T21:49:09Z",
+ "synced_at": "2026-11-07T00:33:05Z",
  "sync": {
   "by": "Sion's Tab agent (board_sync.py, 4-hourly schedule; replaces the Actions run)",
   "source": "HubSpot task subjects and hs_lastmodifieddate (metadata); changelog review counts for % complete (no body text stored)",
-  "last_changes": 10
+  "last_changes": 7
  },
  "events": [
   {
@@ -7914,6 +7914,13 @@
    "version": null,
    "agent": "Tab",
    "event": "Board sync from HubSpot subjects: prc-g5-village-green-vg41-728676: TURN: Claude v0.1.3 -> TURN: Claude v0.1.4; prc-g4c-schedule-of-the-25-dec-1938-bute-mountjo-339945: TURN: Claude v0.1.2 -> TURN: Claude v0.1.3; prc-g3-title-numbers-for-the-hmlr-inspire-polygo-051524: TURN: ChatGPT v0.1.0 -> TURN: ChatGPT v0.1.1; prc-g2-os-1-2500-field-numbers-for-all-36-tithe-864558: TURN: ChatGPT v0.1.2 -> TURN: ChatGPT v0.1.4; glamorgan-archives-632487: OTHER AGENT'S TURN v0.1.1 -> TURN: ChatGPT v0.1.2; added dwr-cymru-welsh-water-791545; added glamorgan-archives-378010; added information-commissioner-s-office-898704; added cadw-welsh-government-888574; seats last_seen refreshed. Metadata only."
+  },
+  {
+   "at": "2026-11-07T00:33:05Z",
+   "draft": null,
+   "version": null,
+   "agent": "Tab",
+   "event": "Board sync from HubSpot subjects: hmcts-cardiff-1955-1962-records: TURN: Claude v0.3.0 -> TURN: ChatGPT v0.3.1; vale-of-glamorgan-council-440921: TURN: ChatGPT v0.2.5 -> TURN: Claude v0.2.7; prc-g6-proposed-correction-to-wiki-page-1097-t21-923316: TURN: Claude v0.1.0 -> TURN: Claude v0.1.1; glamorgan-archives-669848: TURN: Claude v0.4.1 -> TURN: Claude v0.4.2; bp-bp-archive-cc-jack-sheehy-833548: OTHER AGENT'S TURN v0.1.3 -> TURN: ChatGPT v0.1.4; mhclg-325462: OTHER AGENT'S TURN v0.1.1 -> TURN: ChatGPT v0.1.2; seats last_seen refreshed. Metadata only."
   }
  ],
  "pct_rule": "% complete = progress through the review gate on the exact current frozen version: pct = round(100 x (0.7 x min(version_reviews,10)/10 + 0.3 x min(version_distinct_agents,4)/4)). version_reviews / version_distinct_agents / version_agents are counted from each HubSpot task's signed changelog (material reviews of the current version only; creation, skips, routes and restores are not reviews; a signed version_reviews=N tally in the changelog is honoured when higher). Capped at 95 until the task is READY TO SEND or later AND its Gmail draft exists (gmail_draft_id); then 100 = in the owner's Gmail, ready to send or schedule. SENT rows show Sent. Historical reviews/distinct_agents/agents are informational only. Promotion gates beyond IN REVIEW (open_issues=0, seat_agreements_version, final_three_hat_version, attachments_verified_version equal to version) still fail closed.",
@@ -7929,8 +7936,8 @@
    "seat": 2,
    "agent": "ChatGPT",
    "status": "active",
-   "last_seen": "2026-11-06T21:36:47Z",
-   "last_seen_source": "row prc-g2-os-1-2500-field-numbers-for-all-36-tithe-864558"
+   "last_seen": "2026-11-07T00:15:53Z",
+   "last_seen_source": "row vale-of-glamorgan-council-440921"
   },
   {
    "seat": 3,
@@ -7943,12 +7950,12 @@
    "seat": 4,
    "agent": "Claude",
    "status": "active",
-   "last_seen": "2026-11-06T21:12:57Z",
-   "last_seen_source": "row prc-g5-village-green-vg41-728676"
+   "last_seen": "2026-11-07T00:14:11Z",
+   "last_seen_source": "row hmcts-cardiff-1955-1962-records"
   }
  ],
  "seats_rule": "last_seen = newest board activity per seat agent: draft rows whose last_agent/last_action_by is the agent, board events signed by the agent, and turn handoffs (a row leaving 'TURN: <agent>' or changing version while held by the agent, dated at the sync that saw it). Recomputed by board_sync.py every run (protocol v3.11.0 roll call). Metadata only; derived from BOARD.json itself.",
- "seats_as_of": "2026-11-06T21:53:23Z",
+ "seats_as_of": "2026-11-07T00:37:19Z",
  "standing_directions": [
   {
    "id": "SD-2026-11-01-paradigm",
