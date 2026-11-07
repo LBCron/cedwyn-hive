@@ -117,3 +117,17 @@ test("an expired lease cannot be renewed, but can be claimed afresh", async () =
   assert.equal(next.ok, true);
   assert.equal(next.lease.agent, "Pally");
 });
+
+test("two simultaneous renewals retain the current holder and original claim", async () => {
+  const db = storage();
+  claimLease(db, "Tab", 1_000, 60_000);
+  const results = await Promise.all([
+    Promise.resolve().then(() => renewLease(db, "Tab", 20_000, 60_000)),
+    Promise.resolve().then(() => renewLease(db, "Pally", 20_000, 60_000))
+  ]);
+  assert.equal(results.filter(x => x.ok).length, 1);
+  assert.equal(results.filter(x => !x.ok).length, 1);
+  const held = readLease(db, 21_000);
+  assert.equal(held.agent, "Tab");
+  assert.equal(held.claimed_at, new Date(1_000).toISOString());
+});
