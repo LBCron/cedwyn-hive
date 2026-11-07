@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-07T00:33:05Z",
+ "updated": "2026-11-07T00:37:24Z",
  "schema": "metadata only: id, record, version, status, turn, open_issues, last_change, last_agent, rounds (versions written so far); events: [{at, draft, version, agent, event}], newest last. Never email text.",
  "drafts": [
   {
@@ -5437,7 +5437,7 @@
    "gmail_draft_id": null,
    "sent_at": null,
    "archive_url": null,
-   "version_reviews": 1,
+   "version_reviews": 0,
    "version_distinct_agents": 0,
    "version_agents": [],
    "seat_agreements_version": null,
@@ -5449,8 +5449,8 @@
     "as_of": "2026-10-31T21:30:24Z",
     "note": "Board entry added from the HubSpot subject by board_sync.py; no context pack yet. Metadata only."
    },
-   "pct": 7,
-   "pct_at": "2026-11-02T09:48:08Z",
+   "pct": 0,
+   "pct_at": "2026-11-07T00:37:24Z",
    "last_action_at": "2026-11-01T01:40:23Z"
   },
   {
