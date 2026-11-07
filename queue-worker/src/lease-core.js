@@ -2,7 +2,7 @@ const MAX_TTL_MS = 2 * 60 * 60 * 1000;
 const DEFAULT_TTL_MS = 60 * 60 * 1000;
 
 export function cleanAgent(value) {
-  return String(value || "").replace(/[\\u0000-\\u001f<>]/g, "").trim().slice(0, 60);
+  return String(value || "").replace(/[\u0000-\u001f<>]/g, "").trim().slice(0, 60);
 }
 
 function ensureSchema(storage) {
