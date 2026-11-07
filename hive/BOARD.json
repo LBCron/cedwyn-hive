@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-07T03:33:34Z",
+ "updated": "2026-11-07T03:38:00Z",
  "schema": "metadata only: id, record, version, status, turn, open_issues, last_change, last_agent, rounds (versions written so far); events: [{at, draft, version, agent, event}], newest last. Never email text.",
  "drafts": [
   {
@@ -482,7 +482,7 @@
    "gmail_draft_id": null,
    "sent_at": null,
    "archive_url": null,
-   "pct": 14,
+   "pct": 0,
    "reviews": 8,
    "distinct_agents": 2,
    "agents": [
@@ -490,16 +490,14 @@
     "Tab"
    ],
    "stage": "TURN",
-   "pct_at": "2026-11-05T01:46:29Z",
+   "pct_at": "2026-11-07T03:38:00Z",
    "sent_version": null,
    "seat_agreements_version": null,
    "final_three_hat_version": null,
    "attachments_verified_version": null,
-   "version_reviews": 1,
-   "version_distinct_agents": 1,
-   "version_agents": [
-    "Grok"
-   ],
+   "version_reviews": 0,
+   "version_distinct_agents": 0,
+   "version_agents": [],
    "last_action_by": "ChatGPT",
    "last_action_at": "2026-10-30T17:58:43Z",
    "hs_task_status": "WAITING"
@@ -557,21 +555,23 @@
    "sent_at": null,
    "archive_url": null,
    "note": "downgraded from READY TO SEND by the Gmail gate (24 Oct 05:3x BST); board reconciled to HubSpot",
-   "pct": 0,
+   "pct": 14,
    "reviews": 4,
    "distinct_agents": 1,
    "agents": [
     "Tab"
    ],
    "stage": "TURN",
-   "pct_at": "2026-10-27T09:22:45Z",
+   "pct_at": "2026-11-07T03:38:00Z",
    "sent_version": null,
    "seat_agreements_version": null,
    "final_three_hat_version": null,
    "attachments_verified_version": null,
-   "version_reviews": 0,
-   "version_distinct_agents": 0,
-   "version_agents": [],
+   "version_reviews": 1,
+   "version_distinct_agents": 1,
+   "version_agents": [
+    "Tab"
+   ],
    "hs_task_status": "IN_PROGRESS"
   },
   {
@@ -6474,9 +6474,11 @@
    "gmail_draft_id": null,
    "sent_at": null,
    "archive_url": null,
-   "version_reviews": 0,
-   "version_distinct_agents": 0,
-   "version_agents": [],
+   "version_reviews": 1,
+   "version_distinct_agents": 1,
+   "version_agents": [
+    "Tab"
+   ],
    "seat_agreements_version": null,
    "final_three_hat_version": null,
    "attachments_verified_version": null,
@@ -6486,8 +6488,8 @@
     "as_of": "2026-11-05T01:42:22Z",
     "note": "Board entry added from the HubSpot subject by board_sync.py; no context pack yet. Metadata only."
    },
-   "pct": 0,
-   "pct_at": "2026-11-05T01:46:29Z",
+   "pct": 14,
+   "pct_at": "2026-11-07T03:38:00Z",
    "hs_task_status": "IN_PROGRESS"
   },
   {
