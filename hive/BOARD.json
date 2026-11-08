@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-08T00:41:37Z",
+ "updated": "2026-11-08T03:35:48Z",
  "schema": "metadata only: id, record, version, status, turn, open_issues, last_change, last_agent, rounds (versions written so far); events: [{at, draft, version, agent, event}], newest last. Never email text.",
  "drafts": [
   {
@@ -1659,7 +1659,7 @@
    "status": "TURN: Claude",
    "turn": "Claude (per HubSpot subject, read 2026-10-27T10:31Z)",
    "open_issues": null,
-   "last_change": "2026-11-07T22:23:51Z",
+   "last_change": "2026-11-08T00:47:27Z",
    "last_agent": "Claude",
    "rounds": null,
    "tier_since": "2026-10-27T08:48:07Z",
@@ -1787,7 +1787,7 @@
    "status": "TURN: Claude",
    "turn": "Claude (per HubSpot subject, read 2026-10-27T10:31Z)",
    "open_issues": null,
-   "last_change": "2026-11-07T10:30:28Z",
+   "last_change": "2026-11-08T00:48:28Z",
    "last_agent": "Claude",
    "rounds": null,
    "tier_since": "2026-10-27T08:48:07Z",
@@ -1819,7 +1819,7 @@
    "status": "TURN: ChatGPT",
    "turn": "ChatGPT (per HubSpot subject, read 2026-11-07T09:41Z)",
    "open_issues": null,
-   "last_change": "2026-11-07T07:40:53Z",
+   "last_change": "2026-11-08T00:47:58Z",
    "last_agent": "Claude",
    "rounds": null,
    "tier_since": "2026-10-27T08:48:07Z",
@@ -2051,7 +2051,7 @@
    "status": "TURN: Claude",
    "turn": "Claude (per HubSpot subject, read 2026-10-29T10:25Z)",
    "open_issues": null,
-   "last_change": "2026-11-06T20:05:32Z",
+   "last_change": "2026-11-08T00:46:57Z",
    "last_agent": "Claude",
    "rounds": null,
    "tier_since": "2026-10-27T10:09:11Z",
@@ -2634,7 +2634,7 @@
    "status": "TURN: Grok",
    "turn": "Grok (per HubSpot subject, read 2026-11-07T18:38Z)",
    "open_issues": null,
-   "last_change": "2026-11-07T16:45:29Z",
+   "last_change": "2026-11-08T00:48:58Z",
    "last_agent": null,
    "rounds": null,
    "tier_since": "2026-10-29T14:03:09Z",
@@ -4940,7 +4940,7 @@
    "status": "TURN: ChatGPT",
    "turn": "ChatGPT (per HubSpot subject, read 2026-11-07T06:33Z)",
    "open_issues": null,
-   "last_change": "2026-11-07T06:14:06Z",
+   "last_change": "2026-11-08T00:50:13Z",
    "last_agent": "Claude",
    "rounds": null,
    "tier_since": "2026-11-04T06:07:17Z",
@@ -4972,7 +4972,7 @@
    "status": "TURN: ChatGPT",
    "turn": "ChatGPT (per HubSpot subject, read 2026-11-06T14:00Z)",
    "open_issues": null,
-   "last_change": "2026-11-07T10:29:10Z",
+   "last_change": "2026-11-08T00:49:42Z",
    "last_agent": null,
    "rounds": null,
    "tier_since": "2026-11-04T06:07:17Z",
@@ -5557,7 +5557,7 @@
    "status": "TURN: Claude",
    "turn": "Claude (per HubSpot subject, read 2026-11-07T03:33Z)",
    "open_issues": null,
-   "last_change": "2026-11-07T02:02:31Z",
+   "last_change": "2026-11-08T00:50:43Z",
    "last_agent": null,
    "rounds": null,
    "tier_since": "2026-11-05T05:44:30Z",
@@ -5783,7 +5783,7 @@
    "status": "TURN: ChatGPT",
    "turn": "ChatGPT (per HubSpot subject, read 2026-11-07T06:33Z)",
    "open_issues": null,
-   "last_change": "2026-11-07T04:26:07Z",
+   "last_change": "2026-11-08T00:51:14Z",
    "last_agent": null,
    "rounds": null,
    "tier_since": "2026-11-06T09:45:29Z",
@@ -6178,7 +6178,7 @@
    "status": "OTHER AGENT'S TURN",
    "turn": "any other agent (per HubSpot subject, read 2026-11-06T17:59Z)",
    "open_issues": null,
-   "last_change": "2026-11-07T23:01:09Z",
+   "last_change": "2026-11-08T00:52:13Z",
    "last_agent": null,
    "rounds": null,
    "tier_since": "2026-11-06T17:59:24Z",
@@ -6306,7 +6306,7 @@
    "status": "OTHER AGENT'S TURN",
    "turn": "any other agent (per HubSpot subject, read 2026-11-06T21:49Z)",
    "open_issues": null,
-   "last_change": "2026-11-07T11:11:26Z",
+   "last_change": "2026-11-08T00:51:44Z",
    "last_agent": null,
    "rounds": null,
    "tier_since": "2026-11-06T21:49:09Z",
@@ -6814,7 +6814,8 @@
     "note": "Board entry added from the HubSpot subject by board_sync.py; no context pack yet. Metadata only."
    },
    "pct": 0,
-   "pct_at": "2026-11-08T00:41:37Z"
+   "pct_at": "2026-11-08T00:41:37Z",
+   "hs_task_status": "NOT_STARTED"
   },
   {
    "id": "the-national-archives-149658",
@@ -6845,7 +6846,8 @@
     "note": "Board entry added from the HubSpot subject by board_sync.py; no context pack yet. Metadata only."
    },
    "pct": 0,
-   "pct_at": "2026-11-08T00:41:37Z"
+   "pct_at": "2026-11-08T00:41:37Z",
+   "hs_task_status": "NOT_STARTED"
   },
   {
    "id": "the-national-archives-902656",
@@ -6876,7 +6878,8 @@
     "note": "Board entry added from the HubSpot subject by board_sync.py; no context pack yet. Metadata only."
    },
    "pct": 0,
-   "pct_at": "2026-11-08T00:41:37Z"
+   "pct_at": "2026-11-08T00:41:37Z",
+   "hs_task_status": "NOT_STARTED"
   },
   {
    "id": "glamorgan-archives-138712",
@@ -6907,7 +6910,8 @@
     "note": "Board entry added from the HubSpot subject by board_sync.py; no context pack yet. Metadata only."
    },
    "pct": 0,
-   "pct_at": "2026-11-08T00:41:37Z"
+   "pct_at": "2026-11-08T00:41:37Z",
+   "hs_task_status": "NOT_STARTED"
   },
   {
    "id": "university-of-portsmouth-great-britain-historica-138691",
@@ -6938,7 +6942,8 @@
     "note": "Board entry added from the HubSpot subject by board_sync.py; no context pack yet. Metadata only."
    },
    "pct": 0,
-   "pct_at": "2026-11-08T00:41:37Z"
+   "pct_at": "2026-11-08T00:41:37Z",
+   "hs_task_status": "NOT_STARTED"
   },
   {
    "id": "heneb-complaint-outcome",
@@ -7859,11 +7864,11 @@
    "hs_task_status": "COMPLETED"
   }
  ],
- "synced_at": "2026-11-08T00:37:01Z",
+ "synced_at": "2026-11-08T03:35:48Z",
  "sync": {
   "by": "Sion's Tab agent (board_sync.py, 4-hourly schedule; replaces the Actions run)",
   "source": "HubSpot task subjects and hs_lastmodifieddate (metadata); changelog review counts for % complete (no body text stored)",
-  "last_changes": 17
+  "last_changes": 1
  },
  "events": [
   {
@@ -8747,6 +8752,13 @@
    "version": null,
    "agent": "Tab",
    "event": "Board sync from HubSpot subjects: museum-of-english-rural-life-university-of-readi-946828: TURN: Claude v0.1.9 -> TURN: Claude v0.1.10; fcdo-427037: OTHER AGENT'S TURN v0.1.6 -> OTHER AGENT'S TURN v0.1.7; west-glamorgan-archive-service-636933: OTHER AGENT'S TURN v0.1.6 -> OTHER AGENT'S TURN v0.1.7; south-wales-police-054445: TURN: Grok v0.1.0 -> TURN: Claude v0.2.0; ghf-reply-draft-310298: TURN: Grok v0.1.0 -> TURN: Claude v0.1.1; ordnance-survey-400197: OTHER AGENT'S TURN v0.2.0 -> OTHER AGENT'S TURN v0.2.1; welsh-government-561556: OTHER AGENT'S TURN v0.1.0 -> TURN: ChatGPT v0.2.0; valuation-office-agency-598727: OTHER AGENT'S TURN v0.1.0 -> TURN: ChatGPT v0.2.0; ministry-of-housing-communities-and-local-govern-820847: OTHER AGENT'S TURN v0.1.0 -> TURN: ChatGPT v0.2.0; hmrc-information-rights-unit-878411: OTHER AGENT'S TURN v0.1.0 -> TURN: ChatGPT v0.2.0; added cardiff-council-403563; added the-national-archives-149658. Metadata only."
+  },
+  {
+   "at": "2026-11-08T03:35:48Z",
+   "draft": null,
+   "version": null,
+   "agent": "Tab",
+   "event": "Board sync from HubSpot subjects: seats last_seen refreshed. Metadata only."
   }
  ],
  "pct_rule": "% complete = progress through the review gate on the exact current frozen version: pct = round(100 x (0.7 x min(version_reviews,10)/10 + 0.3 x min(version_distinct_agents,4)/4)). version_reviews / version_distinct_agents / version_agents are counted from each HubSpot task's signed changelog (material reviews of the current version only; creation, skips, routes and restores are not reviews; a signed version_reviews=N tally in the changelog is honoured when higher). Capped at 95 until the task is READY TO SEND or later AND its Gmail draft exists (gmail_draft_id); then 100 = in the owner's Gmail, ready to send or schedule. SENT rows show Sent. Historical reviews/distinct_agents/agents are informational only. Promotion gates beyond IN REVIEW (open_issues=0, seat_agreements_version, final_three_hat_version, attachments_verified_version equal to version) still fail closed.",
@@ -8769,19 +8781,19 @@
    "seat": 3,
    "agent": "Grok",
    "status": "active",
-   "last_seen": "2026-11-08T00:14:39Z",
-   "last_seen_source": "row south-wales-police-054445"
+   "last_seen": "2026-11-08T00:37:01Z",
+   "last_seen_source": "turn handoff on south-wales-police-054445 (seen by board sync)"
   },
   {
    "seat": 4,
    "agent": "Claude",
    "status": "active",
-   "last_seen": "2026-11-07T23:05:00Z",
-   "last_seen_source": "row network-rail-freedom-of-information-287313"
+   "last_seen": "2026-11-08T00:50:13Z",
+   "last_seen_source": "row national-highways-historical-railways-estate-994546"
   }
  ],
  "seats_rule": "last_seen = newest board activity per seat agent: draft rows whose last_agent/last_action_by is the agent, board events signed by the agent, and turn handoffs (a row leaving 'TURN: <agent>' or changing version while held by the agent, dated at the sync that saw it). Recomputed by board_sync.py every run (protocol v3.11.0 roll call). Metadata only; derived from BOARD.json itself.",
- "seats_as_of": "2026-11-08T00:41:29Z",
+ "seats_as_of": "2026-11-08T03:40:25Z",
  "standing_directions": [
   {
    "id": "SD-2026-11-01-paradigm",
