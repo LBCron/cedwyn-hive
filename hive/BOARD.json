@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-08T06:39:37Z",
+ "updated": "2026-11-08T06:44:32Z",
  "schema": "metadata only: id, record, version, status, turn, open_issues, last_change, last_agent, rounds (versions written so far); events: [{at, draft, version, agent, event}], newest last. Never email text.",
  "drafts": [
   {
@@ -275,7 +275,7 @@
    "gmail_draft_id": null,
    "sent_at": null,
    "archive_url": null,
-   "pct": 14,
+   "pct": 0,
    "reviews": 8,
    "distinct_agents": 2,
    "agents": [
@@ -283,16 +283,14 @@
     "Tab"
    ],
    "stage": "TURN",
-   "pct_at": "2026-11-07T15:37:43Z",
+   "pct_at": "2026-11-08T06:44:32Z",
    "sent_version": null,
    "seat_agreements_version": null,
    "final_three_hat_version": null,
    "attachments_verified_version": null,
-   "version_reviews": 1,
-   "version_distinct_agents": 1,
-   "version_agents": [
-    "Grok"
-   ],
+   "version_reviews": 0,
+   "version_distinct_agents": 0,
+   "version_agents": [],
    "hs_task_status": "WAITING",
    "last_action_by": "Grok",
    "last_action_at": "2026-11-07T15:09:14Z"
@@ -6859,8 +6857,8 @@
    "gmail_draft_id": null,
    "sent_at": null,
    "archive_url": null,
-   "version_reviews": null,
-   "version_distinct_agents": null,
+   "version_reviews": 0,
+   "version_distinct_agents": 0,
    "version_agents": [],
    "seat_agreements_version": null,
    "final_three_hat_version": null,
@@ -6870,7 +6868,9 @@
     "body": "Surrey History Centre",
     "as_of": "2026-11-08T06:39:37Z",
     "note": "Board entry added from the HubSpot subject by board_sync.py; no context pack yet. Metadata only."
-   }
+   },
+   "pct": 0,
+   "pct_at": "2026-11-08T06:44:32Z"
   },
   {
    "id": "courtauld-institute-of-art-library-and-archive-p-521313",
@@ -6888,8 +6888,8 @@
    "gmail_draft_id": null,
    "sent_at": null,
    "archive_url": null,
-   "version_reviews": null,
-   "version_distinct_agents": null,
+   "version_reviews": 0,
+   "version_distinct_agents": 0,
    "version_agents": [],
    "seat_agreements_version": null,
    "final_three_hat_version": null,
@@ -6899,7 +6899,9 @@
     "body": "Courtauld Institute of Art (Library and Archive; Prints and Drawings)",
     "as_of": "2026-11-08T06:39:37Z",
     "note": "Board entry added from the HubSpot subject by board_sync.py; no context pack yet. Metadata only."
-   }
+   },
+   "pct": 0,
+   "pct_at": "2026-11-08T06:44:32Z"
   },
   {
    "id": "hmlr-lawyer-referral-sar-reply",
