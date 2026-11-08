@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-08T00:37:01Z",
+ "updated": "2026-11-08T00:41:37Z",
  "schema": "metadata only: id, record, version, status, turn, open_issues, last_change, last_agent, rounds (versions written so far); events: [{at, draft, version, agent, event}], newest last. Never email text.",
  "drafts": [
   {
@@ -6801,8 +6801,8 @@
    "gmail_draft_id": null,
    "sent_at": null,
    "archive_url": null,
-   "version_reviews": null,
-   "version_distinct_agents": null,
+   "version_reviews": 0,
+   "version_distinct_agents": 0,
    "version_agents": [],
    "seat_agreements_version": null,
    "final_three_hat_version": null,
@@ -6812,7 +6812,9 @@
     "body": "Cardiff Council",
     "as_of": "2026-11-08T00:37:01Z",
     "note": "Board entry added from the HubSpot subject by board_sync.py; no context pack yet. Metadata only."
-   }
+   },
+   "pct": 0,
+   "pct_at": "2026-11-08T00:41:37Z"
   },
   {
    "id": "the-national-archives-149658",
@@ -6830,8 +6832,8 @@
    "gmail_draft_id": null,
    "sent_at": null,
    "archive_url": null,
-   "version_reviews": null,
-   "version_distinct_agents": null,
+   "version_reviews": 0,
+   "version_distinct_agents": 0,
    "version_agents": [],
    "seat_agreements_version": null,
    "final_three_hat_version": null,
@@ -6841,7 +6843,9 @@
     "body": "The National Archives",
     "as_of": "2026-11-08T00:37:01Z",
     "note": "Board entry added from the HubSpot subject by board_sync.py; no context pack yet. Metadata only."
-   }
+   },
+   "pct": 0,
+   "pct_at": "2026-11-08T00:41:37Z"
   },
   {
    "id": "the-national-archives-902656",
@@ -6859,8 +6863,8 @@
    "gmail_draft_id": null,
    "sent_at": null,
    "archive_url": null,
-   "version_reviews": null,
-   "version_distinct_agents": null,
+   "version_reviews": 0,
+   "version_distinct_agents": 0,
    "version_agents": [],
    "seat_agreements_version": null,
    "final_three_hat_version": null,
@@ -6870,7 +6874,9 @@
     "body": "The National Archives",
     "as_of": "2026-11-08T00:37:01Z",
     "note": "Board entry added from the HubSpot subject by board_sync.py; no context pack yet. Metadata only."
-   }
+   },
+   "pct": 0,
+   "pct_at": "2026-11-08T00:41:37Z"
   },
   {
    "id": "glamorgan-archives-138712",
@@ -6888,8 +6894,8 @@
    "gmail_draft_id": null,
    "sent_at": null,
    "archive_url": null,
-   "version_reviews": null,
-   "version_distinct_agents": null,
+   "version_reviews": 0,
+   "version_distinct_agents": 0,
    "version_agents": [],
    "seat_agreements_version": null,
    "final_three_hat_version": null,
@@ -6899,7 +6905,9 @@
     "body": "Glamorgan Archives",
     "as_of": "2026-11-08T00:37:01Z",
     "note": "Board entry added from the HubSpot subject by board_sync.py; no context pack yet. Metadata only."
-   }
+   },
+   "pct": 0,
+   "pct_at": "2026-11-08T00:41:37Z"
   },
   {
    "id": "university-of-portsmouth-great-britain-historica-138691",
@@ -6917,8 +6925,8 @@
    "gmail_draft_id": null,
    "sent_at": null,
    "archive_url": null,
-   "version_reviews": null,
-   "version_distinct_agents": null,
+   "version_reviews": 0,
+   "version_distinct_agents": 0,
    "version_agents": [],
    "seat_agreements_version": null,
    "final_three_hat_version": null,
@@ -6928,7 +6936,9 @@
     "body": "University of Portsmouth (Great Britain Historical GIS / A Vision of Britain through Time)",
     "as_of": "2026-11-08T00:37:01Z",
     "note": "Board entry added from the HubSpot subject by board_sync.py; no context pack yet. Metadata only."
-   }
+   },
+   "pct": 0,
+   "pct_at": "2026-11-08T00:41:37Z"
   },
   {
    "id": "heneb-complaint-outcome",
